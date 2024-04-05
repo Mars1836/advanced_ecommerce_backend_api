@@ -1,0 +1,10 @@
+@url_dev=http://localhost:4000/v1/api/
+### signup
+POST http://localhost:4000/v1/api/shop/signup
+Content-Type: : application/json
+
+{
+    "name" : "Shop balba",
+    "email": "codelife138@gmail.com",
+    "password" : "123123 "
+}
