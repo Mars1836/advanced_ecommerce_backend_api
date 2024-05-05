@@ -1,5 +1,6 @@
 const { ReasonPhrases } = require("http-status-codes");
 const { StatusCodes } = require("http-status-codes/build/cjs/status-codes");
+const logger = require("../loggers/winston");
 
 const ERRORS = {
   FORBIDDEN: {
@@ -15,6 +16,7 @@ class ErrorResponse extends Error {
   constructor(message, status) {
     super(message);
     this.status = status;
+    this.time = Date.now();
   }
 }
 class ConflictRequestError extends ErrorResponse {

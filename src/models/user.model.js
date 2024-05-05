@@ -5,12 +5,8 @@ const COLLECTION_NAME = "Users";
 const DOCUMENT_NAME = "user";
 var userSchema = new mongoose.Schema(
   {
-    id: {
-      type: Number,
-      required: true,
-    },
     slug: {
-      type: Number,
+      type: String,
       required: true,
     },
     name: {
@@ -54,8 +50,8 @@ var userSchema = new mongoose.Schema(
     status: {
       type: String,
       enum: ["pending", "active", "block"],
+      default: "pending",
     },
-    default: "pending",
   },
   {
     timestamps: true,

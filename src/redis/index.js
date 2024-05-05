@@ -1,8 +1,15 @@
+const { redisdb } = require("../configs/config.redisdb");
 const redis = require("redis");
-const redisClient = redis.createClient({ url: "redis://localhost:5000" });
-(async () => {
+
+const redisClient = redis.createClient({
+  url: `redis://${redisdb.host}:${redisdb.port}`,
+});
+
+redisClient.on("error", (err) => console.log("Redis Client Error", err));
+(async function () {
   await redisClient.connect();
 })();
+
 class RedisClient {
   constructor() {
     this.test = 1;

@@ -6,10 +6,7 @@ const router = express.Router();
 
 router.post("/shop/signup", asyncHandler(accessController.signUp));
 router.post("/shop/signin", asyncHandler(accessController.signIn));
-router.use((req, res, next) => {
-  console.log("passssssssssssssssssssssssssssssssssssssssssssssss");
-  next();
-});
+
 router.use(authenticationV2);
 router.post("/shop/logout", asyncHandler(accessController.logout));
 router.post(

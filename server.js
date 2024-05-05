@@ -1,8 +1,8 @@
 require("dotenv").config();
 const app = require("./src/app");
 const PORT = 4000;
-const server = app.listen(PORT, () => {
-  console.log("server running in port : " + PORT);
+const server = app.listen(process.env.PORT, () => {
+  console.log("server running in port : " + process.env.PORT);
 });
 
 process.on("SIGINT", () => {

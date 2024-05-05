@@ -6,7 +6,6 @@ const ApikeyService = require("../services/apikey.service");
 const apiKeyMid = async (req, res, next) => {
   try {
     const key = req.headers[HEADER.KEY]?.toString();
-    console.log("key", key);
     if (!key) {
       return res.status(403).json({ message: "forbidden Error" });
     }

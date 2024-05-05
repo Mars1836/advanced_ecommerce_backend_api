@@ -1,7 +1,8 @@
 "use strict";
 const { default: mongoose } = require("mongoose");
-const { db } = require("../configs/config.mongodb");
-const connectString = `mongodb://${db.host}:${db.port}/${db.name}`;
+const { mongodb } = require("../configs/config.mongodb");
+const connectString = `mongodb://${mongodb.host}:${mongodb.port}/${mongodb.name}`;
+const connectStringdocker = `mongodb://${mongodb.host}:${mongodb.port}/${mongodb.name}`;
 class Database {
   constructor() {
     this.connect();
@@ -12,9 +13,9 @@ class Database {
       mongoose.set("debug", { color: true });
     }
     mongoose
-      .connect(connectString)
+      .connect(connectStringdocker)
       .then((_) => {
-        console.log(connectString);
+        console.log(connectStringdocker);
         console.log("Connected mongodb success!!!");
       })
       .catch((err) => {

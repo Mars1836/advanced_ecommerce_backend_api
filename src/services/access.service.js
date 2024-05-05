@@ -43,7 +43,6 @@ class AccessService {
       keyStore.publicKey,
       keyStore.privateKey
     );
-    console.log(keyStore);
     await keyStore.updateOne({
       $set: {
         refreshToken: tokens.refreshToken,
@@ -71,7 +70,6 @@ class AccessService {
         refreshToken,
         unauthToken.privateKey
       );
-      console.log({ userId, email });
       await KeyTokenService.deleteByUserId({ userId });
       throw new ForbiddenError("Something wrong happend !! Please login again");
     }
@@ -86,7 +84,6 @@ class AccessService {
     if (!storedShop) {
       throw AuthFailureError("Shop is not registed");
     }
-    console.log(authToken);
     const tokens = await createTokenPair(
       {
         userId,
@@ -115,6 +112,9 @@ class AccessService {
     return delKey;
   };
   static signIn = async ({ email, password, refreshToken = null }) => {
+    if (!email) {
+      throw new BadRequestError("Email or password has not been entered!");
+    }
     const storedShop = await ShopService.findByEmail({ email });
     if (!storedShop) {
       throw new AuthFailureError("Authentication error");

@@ -1,0 +1,15 @@
+2024-05-05 01:21:36.989 PM::info::6fdb3c0f-178f-44e7-b235-93930915c494::	input params::POST::::{"email":"hauhpll123@gmail.com"}
+2024-05-05 01:21:37.009 PM::error::6fdb3c0f-178f-44e7-b235-93930915c494::	undefined-0ms-Response:{"time":1714890097009}::{"message":"Email already exists"}
+2024-05-05 01:21:37.009 PM::error::6fdb3c0f-178f-44e7-b235-93930915c494::	undefined-0ms-Response:{"time":1714890097009}::{"message":"Email already exists"}
+2024-05-05 01:22:54.270 PM::info::2b80d083-7790-48d1-89c6-298764a55109::	input params::POST::::{"email":"hauhpll123@gmail.com"}
+2024-05-05 01:22:54.288 PM::error::2b80d083-7790-48d1-89c6-298764a55109::	undefined-NaNms-Response:{}::{"message":"storeUser is not defined"}
+2024-05-05 01:22:54.288 PM::error::2b80d083-7790-48d1-89c6-298764a55109::	undefined-NaNms-Response:{}::{"message":"storeUser is not defined"}
+2024-05-05 01:23:03.240 PM::info::1757c36a-6289-4064-a614-c49e154e052f::	input params::POST::::{"email":"hauhpll123@gmail.com"}
+2024-05-05 01:23:03.266 PM::error::1757c36a-6289-4064-a614-c49e154e052f::	undefined-0ms-Response:{"time":1714890183265}::{"message":"Email already exists"}
+2024-05-05 01:23:03.266 PM::error::1757c36a-6289-4064-a614-c49e154e052f::	undefined-0ms-Response:{"time":1714890183265}::{"message":"Email already exists"}
+2024-05-05 01:23:21.719 PM::info::36c72b2d-8fe4-46b1-834a-409023b8a4bc::	input params::POST::::{"email":"hauhpll123@gmail.com"}
+2024-05-05 01:23:21.744 PM::error::36c72b2d-8fe4-46b1-834a-409023b8a4bc::	undefined-0ms-Response:{"time":1714890201743}::{"message":"Email already exists"}
+2024-05-05 01:23:21.744 PM::error::36c72b2d-8fe4-46b1-834a-409023b8a4bc::	undefined-0ms-Response:{"time":1714890201743}::{"message":"Email already exists"}
+2024-05-05 01:23:58.326 PM::info::e4e088fc-6ad9-454d-adf8-324219611920::	input params::POST::::{"email":"hauhpll123@gmail.com"}
+2024-05-05 01:24:50.253 PM::info::3474701d-0082-43fc-b1be-569b86fb54a8::	input params::GET::::{}
+2024-05-05 01:24:51.247 PM::info::9e51635e-6ee7-4d03-af7b-c5a0f1277e82::	input params::GET::::{}
