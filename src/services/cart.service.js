@@ -1,10 +1,231 @@
 const { default: mongoose } = require("mongoose");
-const { NotFoundError } = require("../core/error.response");
+const {
+  NotFoundError,
+  ErrorResponse,
+  BadRequestError,
+} = require("../core/error.response");
 const cartModel = require("../models/cart.model");
 const productModel = require("../models/product.model");
+const skuModel = require("../models/sku.model");
+const spuModel = require("../models/spu.model");
 const { handleIdToObjectId } = require("../utils");
 
 class CartService {
+  //spu-sku
+  static async putOutProduct({ userId }, { spuId, skuId, quantity }) {
+    const productId = skuId ? { spuId, skuId } : { spuId };
+    const spu = await spuModel.findOne({ id: spuId });
+    if (!spu) {
+      throw new ErrorResponse("This product does not exits");
+    }
+    const skusOfSpu = await skuModel.find({ spu_id: spuId }).lean();
+    const options = {
+      upsert: true,
+      new: true,
+    };
+    if (skusOfSpu.length > 0) {
+      const sku = skusOfSpu.find((item) => {
+        return item.id === skuId;
+      });
+      if (!sku) {
+        throw new ErrorResponse("Required choose variations of product");
+      }
+    }
+    const query = skuId
+      ? {
+          userId,
+          "productIds.skuId": skuId,
+          // "productIds.spuId": spuId,
+        }
+      : {
+          userId,
+          "productIds.spuId": spuId,
+        };
+    return await cartModel.findOneAndUpdate(
+      query,
+      {
+        $pull: {
+          productIds: {
+            ...productId,
+          },
+        },
+      },
+      options
+    );
+  }
+  static async addProductV2({ userId }, { spuId, skuId, quantity }) {
+    const productId = skuId ? { spuId, skuId } : { spuId };
+    const payload = { ...productId, quantity };
+    const cart = await cartModel.findOne({ userId });
+    let maxQuantity = 0;
+    const spu = await spuModel.findOne({ id: spuId });
+
+    if (!spu) {
+      throw new ErrorResponse("This product does not exits");
+    }
+    maxQuantity = spu.stock;
+    const skusOfSpu = await skuModel.find({ spu_id: spuId }).lean();
+    if (skusOfSpu.length === 0) {
+      delete payload.skuId;
+    }
+    if (skusOfSpu.length > 0) {
+      const sku = skusOfSpu.find((item) => {
+        return item.id === skuId;
+      });
+      if (!sku) {
+        throw new ErrorResponse("Required choose variations of product");
+      }
+      maxQuantity = sku.stock;
+    }
+
+    if (!cart) {
+      const ncart = await cartModel.create({ userId });
+
+      ncart.productIds = [payload];
+      return await ncart.save();
+    }
+    const query = skuId
+      ? {
+          userId,
+          "productIds.skuId": skuId,
+          // "productIds.spuId": spuId,
+        }
+      : {
+          userId,
+          "productIds.spuId": spuId,
+        };
+    const update = {
+      $inc: { "productIds.$.quantity": quantity },
+    };
+    const options = {
+      upsert: true,
+      new: true,
+    };
+    const exitsProduct = await cartModel.findOne(query);
+    if (!exitsProduct) {
+      if (quantity <= 0) return;
+      if (quantity > maxQuantity) {
+        throw new BadRequestError(
+          `You can only add a maximum of ${maxQuantity} products`
+        );
+      }
+      cart.productIds.push(payload);
+      return await cart.save();
+    }
+    const cur = exitsProduct.productIds.find((item) => {
+      let bool = 1;
+      for (const chx in productId) {
+        let match = productId[chx] === item[chx];
+        bool = bool && match;
+      }
+      return bool;
+    });
+    if (!cur) {
+      throw new ErrorResponse("Something wrong!");
+    }
+    const newQuantity = cur.quantity + quantity;
+    if (newQuantity > maxQuantity) {
+      throw new BadRequestError(
+        `You can only add a maximum of ${maxQuantity - cur.quantity} products`
+      );
+    }
+    if (newQuantity <= 0) {
+      return await cartModel.findOneAndUpdate(
+        query,
+        {
+          $pull: {
+            productIds: {
+              ...productId,
+            },
+          },
+        },
+        options
+      );
+    }
+    if (newQuantity) {
+    }
+    return await cartModel.findOneAndUpdate(query, update, options);
+  }
+  static async checkValidProduct({ spuId, skuId }) {}
+  static async setProduct({ userId }, { shopOrderIds }) {
+    const { spuId, skuId, quantity } = shopOrderIds[0]?.product[0];
+
+    const productId = skuId ? { spuId, skuId } : { spuId };
+    const payload = { ...productId, quantity };
+    const cart = await cartModel.findOne({ userId });
+    let maxQuantity = 0;
+    const spu = await spuModel.findOne({ id: spuId });
+
+    if (!spu) {
+      throw new ErrorResponse("This product does not exits");
+    }
+    maxQuantity = spu.stock;
+    const skusOfSpu = await skuModel.find({ spu_id: spuId }).lean();
+    if (skusOfSpu === 0) {
+      delete payload.skuId;
+    }
+    if (skusOfSpu?.length > 0) {
+      const sku = skusOfSpu.find((item) => {
+        return item.id === skuId;
+      });
+      if (!sku) {
+        throw new ErrorResponse("Required choose variations of product");
+      }
+      maxQuantity = sku.stock;
+    }
+    const query = skuId
+      ? {
+          userId,
+          "productIds.skuId": skuId,
+        }
+      : {
+          userId,
+          "productIds.spuId": spuId,
+        };
+    const update = {
+      $set: {
+        "productIds.$.quantity": quantity,
+      },
+    };
+    const options = {
+      upsert: true,
+      new: true,
+    };
+    const exitsProduct = await cartModel.findOne(query);
+    if (!exitsProduct) {
+      if (quantity <= 0) return;
+      if (quantity > maxQuantity) {
+        throw new BadRequestError(
+          `You can only add a maximum of ${maxQuantity} products`
+        );
+      }
+      cart.productIds.push(payload);
+      return await cart.save();
+    }
+
+    if (quantity > maxQuantity) {
+      throw new BadRequestError(
+        `You can only add a maximum of ${maxQuantity} products`
+      );
+    }
+    if (quantity <= 0) {
+      return await cartModel.findOneAndUpdate(
+        query,
+        {
+          $pull: {
+            productIds: {
+              ...productId,
+            },
+          },
+        },
+        options
+      );
+    }
+    return await cartModel.findOneAndUpdate(query, update, options);
+  }
+
+  //spu-sku
+
   static async addQuantityProduct({ userId, productId }, { quantity }) {
     const query = {
       userId,
@@ -114,7 +335,6 @@ class CartService {
   }
 
   static async updateQuantityProductV2({ userId }, { shopOrderIds }) {
-    const query = { userId };
     const { productId, newQuantity } = shopOrderIds[0]?.product[0];
     const { shopId } = shopOrderIds[0];
     //check product exits

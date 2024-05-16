@@ -6,9 +6,12 @@ const DOCUMENT_NAME = "inventory";
 // Declare the Schema of the Mongo model
 var inventorySchema = new mongoose.Schema(
   {
-    productId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "product",
+    skuId: {
+      type: String,
+    },
+    spuId: {
+      type: String,
+      required: true,
     },
     stock: {
       type: Number,

@@ -23,6 +23,11 @@ const grantList = [
 ];
 var roleSchema = new mongoose.Schema(
   {
+    name: {
+      type: String,
+      required: true,
+      unique: true,
+    },
     slug: {
       type: String,
       required: true,
@@ -38,9 +43,8 @@ var roleSchema = new mongoose.Schema(
     grants: [
       {
         recourse: {
-          type: mongoose.Schema.Types.ObjectId,
+          type: String,
           required: true,
-          ref: "recourse",
         },
         actions: [
           {

@@ -1,0 +1,26 @@
+2024-05-13 08:49:07.459 PM::info::fa5d1ec4-93f7-416f-a918-515f0b9a4024::	input params::POST::::{"shopOrderIds":[{"shopId":"65f6aaee65f8d7bae8592d69","discounts":[{"shopId":"65f6aaee65f8d7bae8592d69","code":"SALE30"}],"products":[{"spuId":"ft8sxr52","skuId":"ft8sxr52.v2vamx4t","quantity":6},{"spuId":"xgu92jwt","quantity":7}],"version":2000}]}
+2024-05-13 08:50:07.932 PM::info::8cff4716-5094-4461-8869-d09225b0238b::	input params::POST::::{"shiping":{"city":"Anytown","country":"United States","district":"Example District","street":"123 Main Street"}}
+2024-05-13 08:50:07.952 PM::error::8cff4716-5094-4461-8869-d09225b0238b::	undefined-NaNms-Response:{}::{"message":"Cannot read properties of undefined (reading 'ob')"}
+2024-05-13 08:50:07.952 PM::error::8cff4716-5094-4461-8869-d09225b0238b::	undefined-NaNms-Response:{}::{"message":"Cannot read properties of undefined (reading 'ob')"}
+2024-05-13 08:53:13.885 PM::info::90d53d88-6c2e-465f-bae0-af34de24f020::	input params::POST::::{"shiping":{"city":"Anytown","country":"United States","district":"Example District","street":"123 Main Street"}}
+2024-05-13 08:53:13.899 PM::error::90d53d88-6c2e-465f-bae0-af34de24f020::	401-1ms-Response:{"status":401,"time":1715608393898}::{"message":"Invalid request"}
+2024-05-13 08:53:13.899 PM::error::90d53d88-6c2e-465f-bae0-af34de24f020::	401-1ms-Response:{"status":401,"time":1715608393898}::{"message":"Invalid request"}
+2024-05-13 08:54:44.340 PM::info::0e6d4814-9154-4c73-88b0-5f142062d1c7::	input params::POST::::{"shiping":{"city":"Anytown","country":"United States","district":"Example District","street":"123 Main Street"}}
+2024-05-13 08:54:44.360 PM::error::0e6d4814-9154-4c73-88b0-5f142062d1c7::	undefined-NaNms-Response:{}::{"message":"cartId is not defined"}
+2024-05-13 08:54:44.360 PM::error::0e6d4814-9154-4c73-88b0-5f142062d1c7::	undefined-NaNms-Response:{}::{"message":"cartId is not defined"}
+2024-05-13 08:55:11.137 PM::info::5a9dcb74-55f6-4ce9-b334-a2bd92375b40::	input params::POST::::{"shiping":{"city":"Anytown","country":"United States","district":"Example District","street":"123 Main Street"}}
+2024-05-13 08:55:11.161 PM::error::5a9dcb74-55f6-4ce9-b334-a2bd92375b40::	undefined-NaNms-Response:{}::{"message":"cartId is not defined"}
+2024-05-13 08:55:11.161 PM::error::5a9dcb74-55f6-4ce9-b334-a2bd92375b40::	undefined-NaNms-Response:{}::{"message":"cartId is not defined"}
+2024-05-13 08:55:26.232 PM::info::9a23599e-990a-488e-976c-e74cdfdec1ad::	input params::POST::::{"shiping":{"city":"Anytown","country":"United States","district":"Example District","street":"123 Main Street"}}
+2024-05-13 08:55:26.257 PM::error::9a23599e-990a-488e-976c-e74cdfdec1ad::	undefined-NaNms-Response:{}::{"message":"cartId is not defined"}
+2024-05-13 08:55:26.257 PM::error::9a23599e-990a-488e-976c-e74cdfdec1ad::	undefined-NaNms-Response:{}::{"message":"cartId is not defined"}
+2024-05-13 08:55:27.150 PM::info::b04dfa1e-9ecf-446e-b9de-0c3b1a9de1a6::	input params::POST::::{"shiping":{"city":"Anytown","country":"United States","district":"Example District","street":"123 Main Street"}}
+2024-05-13 08:55:27.163 PM::error::b04dfa1e-9ecf-446e-b9de-0c3b1a9de1a6::	undefined-NaNms-Response:{}::{"message":"cartId is not defined"}
+2024-05-13 08:55:27.163 PM::error::b04dfa1e-9ecf-446e-b9de-0c3b1a9de1a6::	undefined-NaNms-Response:{}::{"message":"cartId is not defined"}
+2024-05-13 08:55:47.102 PM::info::edec19d8-f4d2-4f78-ac33-3aecfc456df5::	input params::POST::::{"shiping":{"city":"Anytown","country":"United States","district":"Example District","street":"123 Main Street"}}
+2024-05-13 08:55:47.132 PM::error::edec19d8-f4d2-4f78-ac33-3aecfc456df5::	403-0ms-Response:{"status":403,"time":1715608547131}::{"message":"Checkout first"}
+2024-05-13 08:55:47.132 PM::error::edec19d8-f4d2-4f78-ac33-3aecfc456df5::	403-0ms-Response:{"status":403,"time":1715608547131}::{"message":"Checkout first"}
+2024-05-13 08:55:53.406 PM::info::ce6c5256-f2e7-4f85-92b7-75cb0898c78c::	input params::POST::::{"shopOrderIds":[{"shopId":"65f6aaee65f8d7bae8592d69","discounts":[{"shopId":"65f6aaee65f8d7bae8592d69","code":"SALE30"}],"products":[{"spuId":"ft8sxr52","skuId":"ft8sxr52.v2vamx4t","quantity":6},{"spuId":"xgu92jwt","quantity":7}],"version":2000}]}
+2024-05-13 08:55:57.231 PM::info::ed7df4a2-8987-44d9-9100-09cd6248a65b::	input params::POST::::{"shiping":{"city":"Anytown","country":"United States","district":"Example District","street":"123 Main Street"}}
+2024-05-13 08:55:57.883 PM::error::ed7df4a2-8987-44d9-9100-09cd6248a65b::	403-0ms-Response:{"status":403,"time":1715608557882}::{"message":"Some product is updated, please check your cart"}
+2024-05-13 08:55:57.883 PM::error::ed7df4a2-8987-44d9-9100-09cd6248a65b::	403-0ms-Response:{"status":403,"time":1715608557882}::{"message":"Some product is updated, please check your cart"}

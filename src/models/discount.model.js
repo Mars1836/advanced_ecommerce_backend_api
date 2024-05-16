@@ -62,7 +62,7 @@ var discountSchema = new mongoose.Schema(
       required: true,
       enum: ["all", "specific"],
     },
-    productIds: {
+    spuIds: {
       type: Array,
       default: [],
     },

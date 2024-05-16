@@ -4,5 +4,8 @@ const EmailController = require("../../controllers/email.controller");
 const asyncHandler = require("../../helpers/async.handler");
 const router = express.Router();
 // router.use(authenticationV2);
-router.post("/sendOTP", asyncHandler(EmailController.sendOTP)); //shop
+router.post(
+  "/send-verify-email",
+  asyncHandler(EmailController.sendVerifyEmail)
+); //shop
 module.exports = router;

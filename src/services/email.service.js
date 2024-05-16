@@ -15,19 +15,28 @@ class EmailService {
     },
   });
 
-  static async sendVerifyEmail({ receiver }) {
-    const otp = await OTPService.create({ email: receiver });
-    console.log(otp);
+  static async sendVerifyEmail({ email }) {
+    const otp = await OTPService.create({ email });
     const infor = await this.transport.sendMail({
       from: "notme.1308@gmail.com",
-      to: receiver,
+      to: email,
       subject: "Verify user",
       text: "",
       html: otpEmailTemp({
-        email: receiver,
+        email,
         verificationLink: `${cstRoute.root}${cstRoute.verifyEmailApi}?token=${otp.token}`,
         appName: "shopDEV",
       }),
+    });
+    return infor;
+  }
+  static async sendPwdReminder({ email, password }) {
+    const infor = await this.transport.sendMail({
+      from: "notme.1308@gmail.com",
+      to: email,
+      subject: "Provide shopdev password",
+      text: `Hi ${email}`,
+      html: `<b>Hello, <strong>${email}</strong>, Your password is:\n<b>${password}</b>.`,
     });
     return infor;
   }

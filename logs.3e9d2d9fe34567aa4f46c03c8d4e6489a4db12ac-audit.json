@@ -6,9 +6,89 @@
     "auditLog": "logs\\.3e9d2d9fe34567aa4f46c03c8d4e6489a4db12ac-audit.json",
     "files": [
         {
-            "date": 1714818827197,
-            "name": "logs/winston.log.2024-05-04-10",
-            "hash": "a8c800beba93076e4cc656e7d4a537d666832b6f45527b8eb33162aef1902bcb"
+            "date": 1715262392863,
+            "name": "logs\\winston.log.2024-05-09-20",
+            "hash": "09f8635adbe6f318d143c19f5135c93b67ee21bd7b9f29b378dde194b0bc0477"
+        },
+        {
+            "date": 1715263294813,
+            "name": "logs\\winston.log.2024-05-09-21",
+            "hash": "7fe8ce7cf2ce18f4e6ebea9c2cc2a0ae27f82f83d5c4f00afba64d3bac03f297"
+        },
+        {
+            "date": 1715271811815,
+            "name": "logs\\winston.log.2024-05-09-23",
+            "hash": "53b434cc55733e41afc21bacc01eb1f27728fcedb2c73a73a34060abb95329de"
+        },
+        {
+            "date": 1715274019949,
+            "name": "logs\\winston.log.2024-05-10-00",
+            "hash": "0863ad2651f5149524d068f07a3336b7dc38b10b752c879480a850b852ed7490"
+        },
+        {
+            "date": 1715278215044,
+            "name": "logs\\winston.log.2024-05-10-01",
+            "hash": "b43afba652364279de4ada59c55f259eabded6131ed562552774c0ea337cfc41"
+        },
+        {
+            "date": 1715302039379,
+            "name": "logs\\winston.log.2024-05-10-07",
+            "hash": "45508a84d624edd7649534513713619c27b118c62b25038de64b9225dee676a9"
+        },
+        {
+            "date": 1715302841688,
+            "name": "logs\\winston.log.2024-05-10-08",
+            "hash": "390dabed55a1501a52726763c6f4e98fa60c068a19286134af03a8d8e3dabe5d"
+        },
+        {
+            "date": 1715325457946,
+            "name": "logs\\winston.log.2024-05-10-14",
+            "hash": "464915db8eef0bc4dacdd90d3b1bd5d48a2cbfd961488d050ec5e9b6e590e679"
+        },
+        {
+            "date": 1715328008827,
+            "name": "logs\\winston.log.2024-05-10-15",
+            "hash": "dcaff398fb3133d2f44490954f3977b4ca883d7cec8b575a5b4f89ae663f0fab"
+        },
+        {
+            "date": 1715331689071,
+            "name": "logs\\winston.log.2024-05-10-16",
+            "hash": "2a5a97bcaa8c8072ed6931520a2a806f427b6841ab82190524ebaf90a9433a38"
+        },
+        {
+            "date": 1715335533604,
+            "name": "logs\\winston.log.2024-05-10-17",
+            "hash": "0b2d71458fd55a6918269b02f5b1b7e2a3e9fbf31ee3779fc83fa86a9fb678c9"
+        },
+        {
+            "date": 1715347234647,
+            "name": "logs\\winston.log.2024-05-10-20",
+            "hash": "8f948a4e41d5d63e4124303abfcb72c80be74f7c0d01a61dc75b8d08ccddbfab"
+        },
+        {
+            "date": 1715357524431,
+            "name": "logs\\winston.log.2024-05-10-23",
+            "hash": "5c369f4349abcd1ffbe3c21d8deffd2fa13c467b81ca2bd1b9d220987404b363"
+        },
+        {
+            "date": 1715363771109,
+            "name": "logs\\winston.log.2024-05-11-00",
+            "hash": "51e8e265f49732fded1ca774be3e7283ac30f6477b9c4e273fdefde1faf427ac"
+        },
+        {
+            "date": 1715364043669,
+            "name": "logs\\winston.log.2024-05-11-01",
+            "hash": "5c99a7cf16053716efe11252916ea4a588d5732f569579885cf1cab0b42d51fa"
+        },
+        {
+            "date": 1715409558730,
+            "name": "logs\\winston.log.2024-05-11-13",
+            "hash": "22bfc6b3e4da26d733d83e5e152bc76f832d31068f9d5e70108284529857f5b0"
+        },
+        {
+            "date": 1715411573724,
+            "name": "logs/winston.log.2024-05-11-07",
+            "hash": "82baca37108f8794a184aa0d06971a402337d16ff60d654b7d0680600c806d52"
         }
     ],
     "hashType": "sha256"

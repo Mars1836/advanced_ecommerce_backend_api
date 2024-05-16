@@ -5,8 +5,8 @@ const { generateTrackNumber } = require("../utils");
 const RedisService = require("./redis.service");
 
 class OrderService {
-  static async orderByUser({ cartId, userId, shiping, status, payment }) {
-    const checkoutStr = await RedisService.getCheckout({ userId, cartId });
+  static async orderByUser({ userId }, { shiping, status, payment }) {
+    const checkoutStr = await RedisService.getCheckout({ userId });
     if (!checkoutStr) {
       throw new BadRequestError("Checkout first");
     }
@@ -15,10 +15,12 @@ class OrderService {
       return item.products;
     });
     const checkList = [];
+
     for (const product of orderProducts) {
+      const { spuId, skuId } = product;
+      const productIdOb = skuId ? { spuId, skuId } : { spuId };
       const keyLock = await RedisService.acquireKey({
-        productId: product.productId,
-        cartId,
+        productIdOb,
         userId,
         quantity: product.quantity,
       });
@@ -27,6 +29,7 @@ class OrderService {
         await RedisService.releaseKey(keyLock);
       }
     }
+    console.log(checkList);
     if (checkList.includes(false)) {
       checkList.forEach((bol, index) => {
         if (!bol) {
@@ -39,7 +42,6 @@ class OrderService {
     }
     const trackingNumber = generateTrackNumber();
     const order = await orderModel.create({
-      cartId,
       userId,
       shiping,
       status,
@@ -51,7 +53,7 @@ class OrderService {
     if (!order) {
       throw ErrorResponse("Make order error");
     }
-    await RedisService.releaseCheckout({ userId, cartId });
+    await RedisService.releaseCheckout({ userId });
     return order;
   }
 

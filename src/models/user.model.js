@@ -43,14 +43,14 @@ var userSchema = new mongoose.Schema(
       type: Date,
       default: null,
     },
-    role: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "role",
+    roles: {
+      type: [String],
+      default: ["user"],
     },
     status: {
       type: String,
       enum: ["pending", "active", "block"],
-      default: "pending",
+      default: "active",
     },
   },
   {

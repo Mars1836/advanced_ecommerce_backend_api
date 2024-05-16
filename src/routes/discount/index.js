@@ -1,11 +1,14 @@
 const express = require("express");
-const { authenticationV2 } = require("../../auth/authUtils");
+const { verifyAsShop } = require("../../auth/authUtils");
 const DiscountController = require("../../controllers/discount.controller");
 const asyncHandler = require("../../helpers/async.handler");
 const router = express.Router();
 
-router.get("/:shopId", asyncHandler(DiscountController.findAllByShop));
-router.use(authenticationV2);
-router.post("", asyncHandler(DiscountController.create));
+router.get("/shop/:shopId", asyncHandler(DiscountController.findAllByShop));
+router.post(
+  "/shop",
+  asyncHandler(verifyAsShop),
+  asyncHandler(DiscountController.createShopDiscount)
+);
 
 module.exports = router;

@@ -5,11 +5,21 @@ const {
 const CartService = require("../services/cart.service");
 
 class CartController {
+  static async addProductV2(req, res, next) {
+    //USER
+    const metadata = await CartService.addProductV2(
+      { userId: req.user.ob.id },
+      req.body
+    );
+    new SuccessResponse({
+      message: "Add new product to cart success",
+      metadata,
+    }).send(res);
+  }
   static async getCartInfor(req, res, next) {
     //USER
-    const { userId } = req.params;
     const metadata = await CartService.getCartInfor({
-      userId,
+      userId: req.user.ob.id,
     });
     new CreateRequestSuccess({
       message: "Get user's cart success",
@@ -26,11 +36,11 @@ class CartController {
     }).send(res);
   }
   static async addProduct(req, res, next) {
-    const { userId, productId, quantity } = req.body;
+    const { spuId, skuId, quantity } = req.body;
     //USER
-    const metadata = await CartService.addProduct(
-      { userId },
-      { productId, quantity }
+    const metadata = await CartService.addProductV2(
+      { userId: req.user.ob.id },
+      { spuId, skuId, quantity }
     );
     new SuccessResponse({
       message: "Add new product to cart success",
@@ -40,8 +50,8 @@ class CartController {
   static async updateQuantityProduct(req, res, next) {
     //USER
     const { shopOrderIds, userId } = req.body;
-    const metadata = await CartService.updateQuantityProduct(
-      { userId },
+    const metadata = await CartService.setProduct(
+      { userId: req.user.ob.id },
       { shopOrderIds }
     );
     new SuccessResponse({
@@ -49,10 +59,13 @@ class CartController {
       metadata,
     }).send(res);
   }
-  static async removeProduct(req, res, next) {
+  static async putOutProduct(req, res, next) {
     // USER
-    const { productId, userId } = req.params;
-    const metadata = await CartService.removeProduct({ productId, userId });
+
+    const metadata = await CartService.putOutProduct(
+      { userId: req.user.ob.id },
+      req.body
+    );
     new SuccessResponse({
       message: "Remove product in cart success",
       metadata,

@@ -5,12 +5,14 @@ const {
 const DiscountService = require("../services/discount.service");
 
 class DiscountController {
-  static async create(req, res, next) {
+  static async createShopDiscount(req, res, next) {
     // shop
-    const discount = await DiscountService.create({
-      ...req.body,
-      shopId: req.user.userId,
-    });
+    const discount = await DiscountService.createShopDiscount(
+      { shopId: req.shop.ob.id },
+      {
+        ...req.body,
+      }
+    );
     new CreateRequestSuccess({
       message: "create discount success",
       metadata: discount,

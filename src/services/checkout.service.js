@@ -1,12 +1,17 @@
-const { NotFoundError, BadRequestError } = require("../core/error.response");
+const {
+  NotFoundError,
+  BadRequestError,
+  ErrorResponse,
+} = require("../core/error.response");
 const cartModel = require("../models/cart.model");
 const orderModel = require("../models/order.model");
+const skuModel = require("../models/sku.model");
 const DiscountService = require("./discount.service");
 const ProductService = require("./product.service");
 const RedisService = require("./redis.service");
 
 class CheckoutService {
-  static async checkoutReview({ cartId, userId, shopOrderIds = [] }) {
+  static async checkoutReview({ userId }, { shopOrderIds = [] }) {
     /* 
     shopOrderIds = [
         {
@@ -26,10 +31,7 @@ class CheckoutService {
             ]
         }
     ] */
-    const storedCartId = await cartModel.findOne({
-      _id: cartId,
-      userId: userId,
-    });
+
     const shopOrderIdsEnd = [];
     const checkOrder = {
       originPrice: 0,
@@ -37,12 +39,10 @@ class CheckoutService {
       feeShip: 0,
       totalDiscount: 0,
     };
-    if (!storedCartId) {
-      throw new NotFoundError("Not found");
-    }
+
     for (const order of shopOrderIds) {
       const { shopId, discounts, products } = order;
-      const checkoutedProducts = await ProductService.checkout(
+      const checkoutedProducts = await ProductService.checkoutSPUSKU(
         products,
         shopId
       );
@@ -83,7 +83,6 @@ class CheckoutService {
       checkOrder.originPrice - checkOrder.totalDiscount;
     const checkout = {
       userId,
-      cartId,
       shopOrderIds,
       shopOrderIdsEnd,
       checkOrder,

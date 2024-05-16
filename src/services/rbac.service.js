@@ -1,6 +1,7 @@
-const { BadRequestError } = require("../core/error.response");
+const { BadRequestError, ErrorResponse } = require("../core/error.response");
 const resourceModel = require("../models/resource.model");
 const roleModel = require("../models/role.model");
+const { flatToListGrant } = require("../utils");
 
 class RBACService {
   static async createResource({ name, slug, description }) {
@@ -42,6 +43,41 @@ class RBACService {
     });
     return role;
   }
-  static async getRole({}) {}
+  static async getListRole() {
+    const roles = await roleModel.find().lean();
+    return flatToListGrant(roles);
+  }
+  static async addOrUpdateGrant({
+    roleName,
+    resourceName,
+    actions = [],
+    attributes = "*",
+  }) {
+    const role = await roleModel.findOne({ name: roleName });
+    if (!role) {
+      throw new ErrorResponse("This role doesn't exist");
+    }
+    const resource = await resourceModel.findOne({ name: resourceName });
+    if (!resource) {
+      throw new ErrorResponse("This resource doesn't exist");
+    }
+    const grantIndex = role.grants.findIndex((item) => {
+      return item.recourse === resourceName;
+    });
+    if (grantIndex === -1) {
+      role.grants.push({
+        recourse: resource.name,
+        actions,
+        attributes,
+      });
+    }
+    role.grants[grantIndex] = {
+      recourse: resource.name,
+      actions,
+      attributes,
+    };
+
+    return await role.save();
+  }
 }
 module.exports = RBACService;

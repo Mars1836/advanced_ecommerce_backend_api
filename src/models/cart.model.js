@@ -13,8 +13,8 @@ var cartSchema = new mongoose.Schema(
     productIds: {
       type: [
         {
-          productId: mongoose.Types.ObjectId,
-          shopId: mongoose.Types.ObjectId,
+          spuId: String,
+          skuId: String,
           name: String,
           quantity: Number,
         },
@@ -35,7 +35,7 @@ var cartSchema = new mongoose.Schema(
       default: 0,
     },
     userId: {
-      type: Number, // number
+      type: mongoose.Types.ObjectId, // number
       required: true,
       unique: true,
     },

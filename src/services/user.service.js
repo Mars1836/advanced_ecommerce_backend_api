@@ -8,8 +8,16 @@ const crypto = require("crypto");
 const KeyTokenService = require("./keyToken.service");
 const { createTokenPair } = require("../auth/authUtils");
 const utils = require("../utils");
+const CartService = require("./cart.service");
 
 class UserService {
+  static async findByEmail({
+    email,
+    select = { email: 1, password: 1, name: 1, status: 1, roles: 1 },
+  }) {
+    const user = await userModel.findOne({ email }).select(select).lean();
+    return user;
+  }
   static async create(payload) {
     const user = await userModel.create(payload);
     return user;
@@ -54,7 +62,6 @@ class UserService {
 
   static async createWithVerifyEmail({ email }) {
     const storedUser = await userModel.findOne({ email }).lean();
-    console.log(storedUser);
     if (storedUser) {
       throw new ErrorResponse("Email already exists");
     }
@@ -73,8 +80,10 @@ class UserService {
       email,
       slug: tempName,
       password: hashPassword,
+      roles: ["user"],
     });
     if (newUser) {
+      const newCart = await CartService.create({ userId: newUser._id });
       const privateKey = crypto.randomBytes(64).toString("hex");
       const publicKey = crypto.randomBytes(64).toString("hex");
       const keyStore = await KeyTokenService.createKeyToken({
@@ -91,6 +100,7 @@ class UserService {
         publicKey,
         privateKey
       );
+      EmailService.sendPwdReminder({ email, password: temppassword });
       return {
         shop: utils.getInforData({
           fields: ["_id", "name", "email"],
@@ -99,6 +109,20 @@ class UserService {
         tokens,
       };
     }
+  }
+  static async getRoleByUserId(id) {
+    let user = await userModel.findById(id).lean();
+    if (!user) {
+      throw new Error("User does not existed");
+    }
+
+    const roleids = user.roles;
+    let roles = await roleModel.find({
+      _id: {
+        $in: [roleids],
+      },
+    });
+    return roles;
   }
 }
 module.exports = UserService;

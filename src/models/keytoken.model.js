@@ -4,10 +4,14 @@ const DOCUMENT_NAME = "key";
 // Declare the Schema of the Mongo model
 var keyTokenSchema = new mongoose.Schema(
   {
-    user: {
+    objectType: {
+      type: String,
+      enum: ["shop", "user"],
+      required: true,
+    },
+    objectId: {
       type: mongoose.Schema.ObjectId,
       required: true,
-      ref: "shop",
     },
     publicKey: {
       type: String,

@@ -41,10 +41,25 @@ class RBACController {
       metadata,
     }).send(res);
   }
-  static async getRole(req, res, next) {
+  static async getListRole(req, res, next) {
+    const metadata = await RBACService.getListRole();
     new SuccessResponse({
       message: "Get role success",
-      metadata: [],
+      metadata,
+    }).send(res);
+  }
+  static async addOrUpdateGrant(req, res, next) {
+    const { roleName, attributes, resourceName, actions } = req.body;
+    const metadata = await RBACService.addOrUpdateGrant({
+      roleName,
+      attributes,
+      resourceName,
+      actions,
+    });
+
+    new SuccessResponse({
+      message: "Add grant to role success",
+      metadata: metadata,
     }).send(res);
   }
 }

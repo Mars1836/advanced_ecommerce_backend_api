@@ -1,5 +1,4 @@
 const express = require("express");
-const { authenticationV2 } = require("../../auth/authUtils");
 const { diskUpload, memoryUpload } = require("../../configs/multer.config");
 
 const UploadController = require("../../controllers/upload.controller");

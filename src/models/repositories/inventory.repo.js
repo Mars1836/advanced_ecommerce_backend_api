@@ -4,9 +4,9 @@ class InventoryRepo {
   static async create({ productId, shopId, stock, location }) {
     return await inventoryModel.create({ productId, shopId, stock, location });
   }
-  static async reservation({ productId, quantity, cartId, userId }) {
+  static async reservation({ productIdOb, quantity, cartId, userId }) {
     const query = {
-      productId,
+      ...productIdOb,
       stock: {
         $gte: quantity,
       },
@@ -18,7 +18,6 @@ class InventoryRepo {
       $push: {
         reservations: {
           userId,
-          cartId,
           quantity,
           createAt: new Date(),
         },

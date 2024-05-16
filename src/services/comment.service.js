@@ -76,7 +76,7 @@ class CommentService {
     );
   }
   //Create comment
-  static async create({ content, userId, productId, parentId }) {
+  static async addCommentByUser({ content, userId, productId, parentId }) {
     if (!parentId) {
       const comment = await commentModel.findOne(
         {

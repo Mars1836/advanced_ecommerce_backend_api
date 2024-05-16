@@ -5,7 +5,7 @@ const DOCUMENT_NAME = "order";
 var orderSchema = new mongoose.Schema(
   {
     userId: {
-      type: Number,
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
     shiping: {
@@ -15,6 +15,7 @@ var orderSchema = new mongoose.Schema(
         district: String,
         street: String,
       },
+      required: true,
     },
     checkout: {
       type: {

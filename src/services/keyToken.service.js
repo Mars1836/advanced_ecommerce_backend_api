@@ -15,13 +15,15 @@ class KeyTokenService {
   // };
 
   static createKeyToken = async ({
-    userId,
+    objectId,
+    objectType,
     publicKey,
     privateKey,
     refreshToken,
   }) => {
     const filter = {
-      user: userId,
+      objectId,
+      objectType,
     };
     const update = {
       publicKey,
@@ -40,12 +42,13 @@ class KeyTokenService {
     );
     return keyTokens ? keyTokens.privateKey : null;
   };
-  static findByUserId = async ({ userId }) => {
-    return await keytokenModel.findOne({ user: new Types.ObjectId(userId) });
+  static findByObject = async ({ objectType, objectId }) => {
+    return await keytokenModel.findOne({ objectType, objectId });
   };
-  static removeById = async ({ id }) => {
+  static deleteByObject = async ({ objectId, objectType }) => {
     const delKey = await keytokenModel.deleteOne({
-      _id: new Types.ObjectId(id),
+      objectId,
+      objectType,
     });
     return delKey;
   };

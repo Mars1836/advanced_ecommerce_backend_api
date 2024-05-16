@@ -11,6 +11,7 @@ const {
   ForbiddenError,
 } = require("../core/error.response");
 const ShopService = require("./shop.service");
+const UserService = require("./user.service");
 const { getInforData } = require("../utils");
 const { createTokenPair } = require("../auth/authUtils");
 const JWT = require("jsonwebtoken");
@@ -106,12 +107,65 @@ class AccessService {
       tokens,
     };
   };
-  static logout = async (keyStore) => {
-    const delKey = await KeyTokenService.removeById(keyStore._id);
-    console.log(delKey);
+  static logoutByUser = async ({ objectId }) => {
+    if (!objectId) {
+      throw new AuthFailureError("This action required authentication");
+    }
+    const delKey = await KeyTokenService.deleteByObject({
+      objectType: "user",
+      objectId,
+    });
     return delKey;
   };
-  static signIn = async ({ email, password, refreshToken = null }) => {
+
+  static logoutByShop = async ({ objectId }) => {
+    if (!objectId) {
+      throw new AuthFailureError("This action required authentication");
+    }
+    const delKey = await KeyTokenService.deleteByObject({
+      objectType: "shop",
+      objectId,
+    });
+    return delKey;
+  };
+
+  static signInByUser = async ({ email, password, refreshToken = null }) => {
+    if (!email) {
+      throw new BadRequestError("Email or password has not been entered!");
+    }
+    const storedUser = await UserService.findByEmail({ email });
+    if (!storedUser) {
+      throw new AuthFailureError("Authentication error");
+    }
+    const isMatchPassword = bcrypt.compare(password, storedUser.password);
+    if (!isMatchPassword) {
+      throw new AuthFailureError("Authentication error");
+    }
+    const privateKey = crypto.randomBytes(64).toString("hex");
+    const publicKey = crypto.randomBytes(64).toString("hex");
+
+    const tokens = await createTokenPair(
+      { id: storedUser._id, email: storedUser.email },
+      publicKey,
+      privateKey
+    );
+    await KeyTokenService.createKeyToken({
+      objectId: storedUser._id,
+      objectType: "user",
+      privateKey,
+      publicKey,
+      refreshToken: tokens.refreshToken,
+    });
+
+    return {
+      shop: getInforData({
+        fields: ["_id", "email", "name"],
+        object: storedUser,
+      }),
+      tokens,
+    };
+  };
+  static signInByShop = async ({ email, password, refreshToken = null }) => {
     if (!email) {
       throw new BadRequestError("Email or password has not been entered!");
     }
@@ -119,24 +173,26 @@ class AccessService {
     if (!storedShop) {
       throw new AuthFailureError("Authentication error");
     }
-
     const isMatchPassword = bcrypt.compare(password, storedShop.password);
     if (!isMatchPassword) {
       throw new AuthFailureError("Authentication error");
     }
     const privateKey = crypto.randomBytes(64).toString("hex");
     const publicKey = crypto.randomBytes(64).toString("hex");
+
     const tokens = await createTokenPair(
-      { userId: storedShop._id, email: storedShop.email },
+      { id: storedShop._id, email: storedShop.email },
       publicKey,
       privateKey
     );
     await KeyTokenService.createKeyToken({
-      userId: storedShop._id,
+      objectId: storedShop._id,
+      objectType: "shop",
       privateKey,
       publicKey,
       refreshToken: tokens.refreshToken,
     });
+
     return {
       shop: getInforData({
         fields: ["_id", "email", "name"],
@@ -145,7 +201,7 @@ class AccessService {
       tokens,
     };
   };
-  static signUp = async ({ name, email, password }) => {
+  static signUpByShop = async ({ name, email, password }) => {
     // check email exits
     const holderShop = await shopModel.findOne({ email }).lean();
     if (holderShop) {

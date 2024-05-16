@@ -6,8 +6,20 @@ const CheckoutService = require("../services/checkout.service");
 const CommentService = require("../services/comment.service");
 
 class CommentController {
-  static async create(req, res, next) {
-    const metadata = await CommentService.create(req.body);
+  static async addCommentByUser(req, res, next) {
+    const metadata = await CommentService.addCommentByUser({
+      ...req.body,
+      userId: req.user.ob.id,
+    });
+    new CreateRequestSuccess({ message: "Created new comment", metadata }).send(
+      res
+    );
+  }
+  static async addCommentByShop(req, res, next) {
+    const metadata = await CommentService.addCommentByShop({
+      ...req.body,
+      userId: req.shop.ob.id,
+    });
     new CreateRequestSuccess({ message: "Created new comment", metadata }).send(
       res
     );

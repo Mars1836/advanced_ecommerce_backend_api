@@ -31,7 +31,7 @@ var shopSchema = new mongoose.Schema(
     },
     roles: {
       type: Array,
-      default: [],
+      default: ["shop"],
     },
   },
   {

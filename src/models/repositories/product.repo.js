@@ -23,6 +23,7 @@ class ProductRepo {
     return products;
   };
   static searchByUser = async (query, options = {}) => {
+    const { page, limit, select } = options;
     return await productModel
       .find(
         {
@@ -32,6 +33,8 @@ class ProductRepo {
         { score: { $meta: "textScore" } }
       )
       .sort({ score: { $meta: "textScore" } })
+      .skip((page - 1) * limit)
+      .limit(limit)
       .lean();
   };
   static findById = async (query, { select = [], unSelect = [], lean }) => {
@@ -93,6 +96,10 @@ class ProductRepo {
     query = handleIdToObjectId(query);
     filterNoValueField(update);
     const product = await productModel.findOne(query);
+
+    if (!product) {
+      throw new Error("This product is not exist!");
+    }
     // if (update.type && update.attributes) {
 
     // } else if (update.type) {

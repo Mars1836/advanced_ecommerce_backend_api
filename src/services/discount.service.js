@@ -8,22 +8,24 @@ const ProductService = require("./product.service");
 
 class DiscountService {
   // generator discount [Shop|Admin]
-  static async create({
-    name,
-    description,
-    type,
-    value,
-    code,
-    startDate,
-    endDate,
-    maxUses,
-    maxUsesPerPerson,
-    minOrderValue,
-    shopId,
-    isActive,
-    applyTo,
-    productIds,
-  }) {
+  static async createShopDiscount(
+    { shopId },
+    {
+      name,
+      description,
+      type,
+      value,
+      code,
+      startDate,
+      endDate,
+      maxUses,
+      maxUsesPerPerson,
+      minOrderValue,
+      isActive,
+      applyTo,
+      productIds,
+    }
+  ) {
     // check date
     if (
       new Date(startDate) >= new Date(endDate) ||

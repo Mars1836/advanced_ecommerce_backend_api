@@ -24,22 +24,43 @@ class AccessController {
       res
     );
   };
-  logout = async (req, res, next) => {
-    const delKey = await AccessService.logout(req.keyStore);
+  logoutByUser = async (req, res, next) => {
+    const delKey = await AccessService.logoutByUser({
+      objectId: req.user.ob.id,
+    });
     new SuccessResponse({ metadata: delKey, message: "Logout success!" }).send(
       res
     );
   };
-  signIn = async (req, res, next) => {
-    const re = await AccessService.signIn(req.body);
+  logoutByShop = async (req, res, next) => {
+    const delKey = await AccessService.logoutByShop({
+      objectId: req.shop.ob.id,
+    });
+    new SuccessResponse({ metadata: delKey, message: "Logout success!" }).send(
+      res
+    );
+  };
+  signInByShop = async (req, res, next) => {
+    const re = await AccessService.signInByShop(req.body);
     new SuccessResponse({ metadata: re, message: "Login success" }).send(res);
   };
-  signUp = async (req, res, next) => {
-    const ob = await AccessService.signUp(req.body);
+  signUpByShop = async (req, res, next) => {
+    const ob = await AccessService.signUpByShop(req.body);
     new CreateRequestSuccess({ options: { limit: 10 }, metadata: ob }).send(
       res
     );
   };
+  signInByUser = async (req, res, next) => {
+    const re = await AccessService.signInByUser(req.body);
+    new SuccessResponse({ metadata: re, message: "Login success" }).send(res);
+  };
+  signUpByUser = async (req, res, next) => {
+    const ob = await AccessService.signUpByUser(req.body);
+    new CreateRequestSuccess({ options: { limit: 10 }, metadata: ob }).send(
+      res
+    );
+  };
+
   signUp1 = async (req, res, next) => {
     try {
       const storedKey = await ApikeyService.create();

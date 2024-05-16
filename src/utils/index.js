@@ -77,19 +77,58 @@ function countFrequencyEle(array, element) {
   }
   return count;
 }
+function generateStr(characters, length) {
+  let str = "";
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    str += characters.charAt(randomIndex);
+  }
+
+  return str;
+}
 function generateTrackNumber() {
   const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   const trackNumberLength = 10;
-  let trackNumber = "";
 
-  for (let i = 0; i < trackNumberLength; i++) {
-    const randomIndex = Math.floor(Math.random() * characters.length);
-    trackNumber += characters.charAt(randomIndex);
-  }
-
-  return trackNumber;
+  return generateStr(characters, trackNumberLength);
 }
+function generateId() {
+  const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
+  const trackNumberLength = 8;
 
+  return generateStr(characters, trackNumberLength);
+}
+function flatToListGrant(roles) {
+  return roles.flatMap((item) => {
+    return item.grants.map((childItem) => {
+      const rs = {
+        role: item.name,
+        resource: childItem.name,
+        ...childItem,
+      };
+      const fields = ["role", "recourse", "actions", "attributes"];
+      return getInforData({ object: rs, fields });
+    });
+  });
+}
+function findObjectItemByChildObject(array, ob) {
+  const rs = array.find((item) => {
+    let bool = 1;
+    for (const chx in ob) {
+      let match = ob[chx] === array[chx];
+      bool = bool && match;
+    }
+    return bool;
+  });
+}
+function delUnValueField(ob) {
+  for (const x in ob) {
+    if (ob[x] === null || ob[x] === undefined) {
+      delete ob[x];
+    }
+  }
+}
 const utils = {
   getInforData,
   handleIdToObjectId,
@@ -101,5 +140,8 @@ const utils = {
   arrayContain,
   countFrequencyEle,
   generateTrackNumber,
+  generateId,
+  flatToListGrant,
+  delUnValueField,
 };
 module.exports = utils;

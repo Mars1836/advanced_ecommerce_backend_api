@@ -1,9 +1,15 @@
-const { BadRequestError, NotFoundError } = require("../core/error.response");
+const {
+  BadRequestError,
+  NotFoundError,
+  ErrorResponse,
+} = require("../core/error.response");
 const Payload = require("../helpers/payload.handler");
 const productModel = require("../models/product.model");
 const productTypeModel = require("../models/product.type.model");
 const InventoryRepo = require("../models/repositories/inventory.repo");
 const ProductRepo = require("../models/repositories/product.repo");
+const skuModel = require("../models/sku.model");
+const spuModel = require("../models/spu.model");
 const NotificationService = require("./notification.service");
 
 class ProductService {
@@ -111,7 +117,7 @@ class ProductService {
   }
   static async searchByUser(
     { keySearch },
-    { sort, page, filter, limit, select }
+    { sort = 1, page = 0, filter, limit, select }
   ) {
     const options = { sort, page, filter, limit, select };
     const query = keySearch;
@@ -120,8 +126,8 @@ class ProductService {
 
   //update
   //update infor product
-  static async updateById({ id, shopId }, update, options) {
-    const query = { id, shopId };
+  static async updateById({ id, shopId }, update, options = {}) {
+    const query = { _id: id, shopId };
     options.new = true;
     return await ProductRepo.updateById(query, update, options);
   }
@@ -133,12 +139,65 @@ class ProductService {
     return await ProductRepo.togglePublishedByShop(query, update);
   }
   static async unPublishProductByShop({ id, shopId }, options) {
-    const query = { shopId, _id: id };
+    const query = { shopId, id: id };
     const update = { isPublished: false, isDraft: true };
     return await ProductRepo.togglePublishedByShop(query, update, options);
   }
 
   // check if product is match with database
+  static async checkSPUSKU({ spuId, skuId }) {
+    const spu = await spuModel.findOne({ id: spuId });
+    if (!spu) {
+      throw new ErrorResponse("This product does not exits");
+    }
+    const skusOfSpu = await skuModel.find({ spu_id: spuId }).lean();
+    if (skusOfSpu?.length > 0) {
+      const sku = skusOfSpu.find((item) => {
+        return item.id === skuId;
+      });
+      if (!sku) {
+        throw new ErrorResponse("Required choose variations of product");
+      }
+      return { spuId, skuId };
+    }
+    return { spuId };
+  }
+  static async checkoutSPUSKU(products = [], shopId) {
+    if (!products?.length) {
+      throw new BadRequestError("Product list is invalid");
+    }
+    return Promise.all(
+      products.map(async ({ quantity, spuId, skuId }) => {
+        const spu = await spuModel.findOne({ id: spuId, shopId }).lean();
+        if (!spu) {
+          throw new ErrorResponse("Product does not exist.");
+        }
+        const skusOfSpu = await skuModel.find({ spu_id: spuId }).lean();
+        if (skusOfSpu.length > 0) {
+          const sku = skusOfSpu.find((item) => {
+            return item.id === skuId;
+          });
+          if (!sku) {
+            throw new ErrorResponse("Required choose variations of product");
+          }
+          return {
+            quantity,
+            skuId,
+            spuId,
+            price: sku.price,
+            name: spu.name,
+          };
+        }
+        return {
+          quantity,
+          spuId,
+          price: spu.price,
+          name: spu.name,
+        };
+      })
+    );
+  }
+
   static async checkout(products = [], shopId) {
     if (!products?.length) {
       throw new BadRequestError("Product list is invalid");

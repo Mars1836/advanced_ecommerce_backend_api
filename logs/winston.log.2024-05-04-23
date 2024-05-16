@@ -1,7 +1,0 @@
-2024-05-04 11:01:18.326 PM::info::a52c701e-bfc5-48ce-9f1b-86d5d8456af6::	input params::GET::::{}
-2024-05-04 11:01:40.282 PM::info::6021ef3c-7564-40ca-874d-6dec5f2a6fa1::	input params::POST::::{"receiver":"hauhpll123@gmail.com"}
-2024-05-04 11:01:40.315 PM::error::6021ef3c-7564-40ca-874d-6dec5f2a6fa1::	undefined-NaNms-Response:{}::{"message":"email is not defined"}
-2024-05-04 11:01:40.315 PM::error::6021ef3c-7564-40ca-874d-6dec5f2a6fa1::	undefined-NaNms-Response:{}::{"message":"email is not defined"}
-2024-05-04 11:02:01.535 PM::info::65c05543-ce66-4be1-8ee2-c91e3e0f8402::	input params::POST::::{"receiver":"hauhpll123@gmail.com"}
-2024-05-04 11:02:12.576 PM::info::18937824-adb6-4b4e-8f81-e74c5c195bc1::	input params::GET::::{}
-2024-05-04 11:02:13.700 PM::info::d76f1443-76a3-4dc9-8a28-c7f8dbad1354::	input params::GET::::{}

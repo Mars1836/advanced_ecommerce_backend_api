@@ -1,43 +1,79 @@
 const express = require("express");
-const { authenticationV2 } = require("../../auth/authUtils");
+const { verifyAsShop } = require("../../auth/authUtils");
 const productController = require("../../controllers/product.controller");
 const asyncHandler = require("../../helpers/async.handler");
 const router = express.Router();
 
-router.get("/search/:keySearch", asyncHandler(productController.searchByUser)); //user
-router.get("/shop/:shopId", asyncHandler(productController.findAllByShop)); //user
+//spu-sku
+router.post(
+  "/spu",
+  asyncHandler(verifyAsShop),
+  asyncHandler(productController.createSPU)
+);
+router.get("/spu/sku", asyncHandler(productController.findSPUWithSKU));
+router.get("/spu/search/:text", asyncHandler(productController.searchSPU));
+
+router.get("/sku", asyncHandler(productController.fineSKUById));
+//spu-sku_____
+router.get(
+  "/item/search/:keySearch",
+  asyncHandler(productController.searchByUser)
+); //user
+router.get("/item/shop/:shopId", asyncHandler(productController.findAllByShop)); //user
 
 router.get(
   //user
-  "/publish/shop/:shopId",
+  "/item/publish/shop/:shopId",
   asyncHandler(productController.findAllPublishOfShop)
 );
-router.get("/:id", asyncHandler(productController.findById)); //user
-router.get("/", asyncHandler(productController.findAll)); //user
 
-// api require authentication
-router.use(authenticationV2);
+router.get("/item/:id", asyncHandler(productController.findById)); //user
+router.get("/item", asyncHandler(productController.findAll)); //user
 
 //post
-router.post("", asyncHandler(productController.create)); //shop
-router.post("/many", asyncHandler(productController.createMany)); //shop
+router.post(
+  "/item",
+  asyncHandler(verifyAsShop),
+  asyncHandler(productController.create)
+); //shop
+router.post(
+  "/item/many",
+  asyncHandler(verifyAsShop),
+  asyncHandler(productController.createMany)
+); //shop
 
 //put
 
 router.put(
   // shop
-  "/publish/:id",
+  "/item/publish/:id",
+  asyncHandler(verifyAsShop),
   asyncHandler(productController.publishProductByShop)
 );
 router.put(
   //shop
-  "/un-publish/:id",
+  "/item/un-publish/:id",
+  asyncHandler(verifyAsShop),
   asyncHandler(productController.unPublishProductByShop)
 );
-router.put("/:id", asyncHandler(productController.updateById)); //shop
+router.put(
+  "/item/:id",
+  asyncHandler(verifyAsShop),
+  asyncHandler(productController.updateById)
+); //shop
 //get
-router.get("/draft/all", asyncHandler(productController.findAllDraftOfShop)); //shop
+router.get(
+  "/item/draft/all",
+  asyncHandler(verifyAsShop),
+  asyncHandler(productController.findAllDraftOfShop)
+); //shop
 
 //delete
-router.delete("", asyncHandler(productController.delete));
+router.delete(
+  "/item",
+  asyncHandler(verifyAsShop),
+  asyncHandler(productController.delete)
+);
+
+//
 module.exports = router;

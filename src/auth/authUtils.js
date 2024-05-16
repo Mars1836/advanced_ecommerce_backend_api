@@ -11,11 +11,11 @@ const createTokenPair = async (payload, publicKey, privateKey) => {
   try {
     const accessToken = await JWT.sign(payload, publicKey, {
       // algorithm: "RS256",
-      expiresIn: "2 days",
+      expiresIn: "30 days",
     });
     const refreshToken = await JWT.sign(payload, privateKey, {
       // algorithm: "RS256",
-      expiresIn: "7 days",
+      expiresIn: "60 days",
     });
 
     JWT.verify(accessToken, publicKey, function (err, decoded) {
@@ -30,7 +30,7 @@ const createTokenPair = async (payload, publicKey, privateKey) => {
     console.log("token error: ", error);
   }
 };
-const authentication = asyncHandler(async (req, res, next) => {
+const authentication = async (req, res, next) => {
   const userId = req.headers[HEADER.CLIENT_ID];
   if (!userId) {
     throw new AuthFailureError("Invalid request");
@@ -53,44 +53,91 @@ const authentication = asyncHandler(async (req, res, next) => {
   } catch (error) {
     throw error;
   }
-});
-const authenticationV2 = asyncHandler(async (req, res, next) => {
-  const userId = req.headers[HEADER.CLIENT_ID];
-  if (!userId) {
+};
+const verify = async (req, res, next, objectType) => {
+  let id, atoken, rtoken;
+
+  if (objectType === "shop") {
+    id = req.headers[HEADER.SHOP_ID];
+    atoken = req.headers[HEADER.SHOP_AUTHORIZATION];
+    rtoken = req.headers[HEADER.SHOP_REFRESHTOKEN];
+    req.shop = {};
+  }
+  if (objectType === "user") {
+    id = req.headers[HEADER.USER_ID];
+    atoken = req.headers[HEADER.USER_AUTHORIZATION];
+    rtoken = req.headers[HEADER.USER_REFRESHTOKEN];
+    req.user = {};
+  }
+  if (!id) {
     throw new AuthFailureError("Invalid request");
   }
-  const keyStore = await KeyTokenService.findByUserId({ userId });
-  if (!keyStore) {
-    throw new AuthFailureError("Invalid userId");
-  }
-  const refreshToken = req.headers[HEADER.REFRESHTOKEN];
-  if (refreshToken) {
-    try {
-      const decode = JWT.verify(refreshToken, keyStore.privateKey);
 
-      req.keyStore = keyStore;
-      req.refreshToken = refreshToken;
-      req.user = decode;
+  const keyStore = await KeyTokenService.findByObject({
+    objectId: id,
+    objectType,
+  });
+
+  if (!keyStore) {
+    throw new AuthFailureError("Invalid request");
+  }
+  if (rtoken) {
+    try {
+      const decode = JWT.verify(rtoken, keyStore.privateKey);
+      if (objectType === "shop") {
+        req.shop.keyStore = keyStore;
+        req.shop.refreshToken = rtoken;
+        req.shop.ob = decode;
+      }
+      if (objectType === "user") {
+        req.user.keyStore = keyStore;
+        req.user.refreshToken = rtoken;
+        req.user.ob = decode;
+      }
       return next();
     } catch (error) {
       throw error;
     }
   }
-  const accessToken = req.headers[HEADER.AUTHORIZATION];
-  if (!accessToken) {
+  if (!atoken) {
     throw new AuthFailureError("Authentication must be provided");
   }
   try {
-    const decodeUser = JWT.verify(accessToken, keyStore.publicKey);
-    if (userId !== decodeUser.userId) {
-      throw new AuthFailureError("Invalid userId");
+    const decode = JWT.verify(atoken, keyStore.publicKey);
+    if (objectType === "shop") {
+      req.shop.keyStore = keyStore;
+      req.shop.ob = decode;
     }
-    req.keyStore = keyStore;
-    req.user = decodeUser;
+    if (objectType === "user") {
+      req.user.keyStore = keyStore;
+      req.user.ob = decode;
+    }
     return next();
   } catch (error) {
     throw error;
   }
-});
-const authUtils = { authentication, createTokenPair, authenticationV2 };
+};
+
+const verifyAsShop = async (req, res, next) => {
+  try {
+    await verify(req, res, next, "shop");
+  } catch (error) {
+    throw error;
+  }
+
+  // next();
+};
+const verifyAsUser = async (req, res, next) => {
+  try {
+    await verify(req, res, next, "user");
+  } catch (error) {
+    throw error;
+  }
+};
+const authUtils = {
+  authentication,
+  createTokenPair,
+  verifyAsUser,
+  verifyAsShop,
+};
 module.exports = authUtils;
