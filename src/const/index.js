@@ -6,6 +6,9 @@ const HEADER = {
   USER_AUTHORIZATION: "u-authorization", //accessToken
   USER_ID: "x-u-id", // shop id or user id
   USER_REFRESHTOKEN: "u-refreshtoken",
+  ADMIN_AUTHORIZATION: "a-authorization", //accessToken
+  ADMIN_ID: "x-a-id", // shop id or ADMIN id
+  ADMIN_REFRESHTOKEN: "a-refreshtoken",
 };
 const constant = { HEADER };
 module.exports = constant;

@@ -1,7 +1,9 @@
 const { ErrorResponse } = require("../core/error.response");
+const { attrModel, attrItemModel } = require("../models/attribute.model");
 const skuModel = require("../models/sku.model");
 const spuModel = require("../models/spu.model");
 const { getUnSelectData, delUnValueField } = require("../utils");
+const AttrService = require("./attribute.service");
 const InventoryService = require("./inventory.service");
 const SKUService = require("./sku.service");
 
@@ -19,7 +21,7 @@ class SPUService {
       .limit(limit);
     return spus;
   }
-  static async findWithSKU({ spu_id }) {
+  static async findWithSKU({ spu_id }, { _detail }) {
     const spu = await spuModel
       .findOne({ id: spu_id })
       .lean()
@@ -46,8 +48,18 @@ class SPUService {
           "isDeleted",
           "isDraft",
           "isPublished",
+          "updatedAt",
         ])
       );
+    if (_detail == 1) {
+      const attr_item = await attrItemModel
+        .findOne({ id: spu?.attribute?.attr_item_id })
+        .select(getUnSelectData(["__v", "createdAt", "updatedAt", "_id"]))
+        .lean();
+      if (spu && spu.attribute) {
+        spu.attribute.attr_item = attr_item;
+      }
+    }
     return { ...spu, skus };
   }
   static async create(
@@ -58,20 +70,38 @@ class SPUService {
       description,
       price,
       catagories,
-      attributes,
+      attribute,
       variations,
       sku_list = [],
       stock,
       location,
     }
   ) {
+    const { attr_name, attr_item } = attribute;
+    const attr = await attrModel.findOne({ name: attr_name });
+    if (!attr) {
+      throw new ErrorResponse("This attribute is not exist!");
+    }
+    const aItem = await AttrService.createItem({
+      attrId: attr.id,
+      name: attr_item.name,
+      description: attr_item.description,
+      spec: attr_item.spec,
+    });
+    if (!aItem) {
+      throw new ErrorResponse("Some thing wrong!");
+    }
+    let attrPro = {
+      attr_name,
+      attr_item_id: aItem.id,
+    };
     const spu = await spuModel.create({
       name,
       thumb,
       description,
       price,
       catagories,
-      attributes,
+      attribute: attrPro,
       variations,
       shopId,
     });

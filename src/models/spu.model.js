@@ -38,16 +38,17 @@ var spuSchema = new mongoose.Schema(
       ref: "shop",
       required: true,
     },
-    attributes: {
-      type: mongoose.Schema.Types.Mixed,
+    attribute: {
+      type: {
+        attr_name: { type: String, required: true },
+        attr_item_id: { type: String, required: true },
+      },
       required: true,
     },
     /* {
-            attribute_id:12345,
-            attrubyte_values: [
-                {
-                    value_id:123
-                }
+            attrName:12345,
+            attrValues: [
+                name
             ]
         } 
     */

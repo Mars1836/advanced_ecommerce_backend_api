@@ -69,6 +69,12 @@ const verify = async (req, res, next, objectType) => {
     rtoken = req.headers[HEADER.USER_REFRESHTOKEN];
     req.user = {};
   }
+  if (objectType === "admin") {
+    id = req.headers[HEADER.ADMIN_ID];
+    atoken = req.headers[HEADER.ADMIN_AUTHORIZATION];
+    rtoken = req.headers[HEADER.ADMIN_REFRESHTOKEN];
+    req.admin = {};
+  }
   if (!id) {
     throw new AuthFailureError("Invalid request");
   }
@@ -94,6 +100,11 @@ const verify = async (req, res, next, objectType) => {
         req.user.refreshToken = rtoken;
         req.user.ob = decode;
       }
+      if (objectType === "admin") {
+        req.admin.keyStore = keyStore;
+        req.admin.refreshToken = rtoken;
+        req.admin.ob = decode;
+      }
       return next();
     } catch (error) {
       throw error;
@@ -112,6 +123,10 @@ const verify = async (req, res, next, objectType) => {
       req.user.keyStore = keyStore;
       req.user.ob = decode;
     }
+    if (objectType === "admin") {
+      req.admin.keyStore = keyStore;
+      req.admin.ob = decode;
+    }
     return next();
   } catch (error) {
     throw error;
@@ -124,8 +139,13 @@ const verifyAsShop = async (req, res, next) => {
   } catch (error) {
     throw error;
   }
-
-  // next();
+};
+const verifyAsAdmin = async (req, res, next) => {
+  try {
+    await verify(req, res, next, "admin");
+  } catch (error) {
+    throw error;
+  }
 };
 const verifyAsUser = async (req, res, next) => {
   try {

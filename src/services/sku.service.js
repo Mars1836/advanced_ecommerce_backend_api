@@ -23,7 +23,6 @@ class SKUService {
       delUnValueField(ob);
       return ob;
     });
-    console.log("Inventorys : ", inventorys);
     await InventoryService.createMany(inventorys);
     return skus;
   }

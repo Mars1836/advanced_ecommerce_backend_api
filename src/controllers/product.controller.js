@@ -162,10 +162,13 @@ class ProductController {
     new SuccessResponse({ message: "Create spu success", metadata }).send(res);
   };
   findSPUWithSKU = async (req, res, next) => {
-    const { spu_id } = req.query;
-    const metadata = await SPUService.findWithSKU({
-      spu_id,
-    });
+    const { spu_id, _detail } = req.query;
+    const metadata = await SPUService.findWithSKU(
+      {
+        spu_id,
+      },
+      { _detail }
+    );
     new SuccessResponse({ message: "Create spu success", metadata }).send(res);
   };
   searchSPU = async (req, res, next) => {

@@ -1,3 +1,0 @@
-2024-05-13 10:59:38.695 PM::info::09fc1a1c-02c1-400d-85ee-0ebc682652f2::	input params::POST::::{"shiping":{"city":"Anytown","country":"United States","district":"Example District","street":"123 Main Street"}}
-2024-05-13 10:59:38.752 PM::error::09fc1a1c-02c1-400d-85ee-0ebc682652f2::	403-1ms-Response:{"status":403,"time":1715615978750}::{"message":"Checkout first"}
-2024-05-13 10:59:38.752 PM::error::09fc1a1c-02c1-400d-85ee-0ebc682652f2::	403-1ms-Response:{"status":403,"time":1715615978750}::{"message":"Checkout first"}

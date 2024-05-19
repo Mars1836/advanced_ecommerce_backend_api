@@ -17,6 +17,7 @@ app.use(
     origin: "*",
   })
 );
+
 app.use(morgan("dev"));
 app.use(helmet());
 app.use(compression());
