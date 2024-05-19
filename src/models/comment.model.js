@@ -8,11 +8,15 @@ var commentModel = new mongoose.Schema(
       type: String,
       required: true,
     },
-    userId: {
+    objectType: {
       type: Number,
       required: true,
     },
-    productId: {
+    objectId: {
+      type: String,
+      required: true,
+    },
+    spuId: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
     },

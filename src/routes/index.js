@@ -38,6 +38,7 @@ router.use("/v1/api/rbac", require("./rbac"));
 // router.use("/v1/api/email", require("./email"));
 router.use("/v1/api/user", require("./user"));
 router.use("/v1/api/attr", require("./attribute"));
+router.use("/v1/api/review", require("./review"));
 router.use((req, res, next) => {
   const error = new NotFoundError("Page not foundddd");
   next(error);

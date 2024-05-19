@@ -14,6 +14,7 @@ router.get("/spu/sku", asyncHandler(productController.findSPUWithSKU));
 router.get("/spu/search/:text", asyncHandler(productController.searchSPU));
 
 router.get("/sku", asyncHandler(productController.fineSKUById));
+
 //spu-sku_____
 router.get(
   "/item/search/:keySearch",

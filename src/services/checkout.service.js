@@ -56,9 +56,12 @@ class CheckoutService {
         shopId,
         discounts,
         products: checkoutedProducts,
-        totalDiscount: 0,
-        originPrice,
-        discountedPrice: originPrice,
+        checkOrder: {
+          totalDiscount: 0,
+          originPrice,
+          feeShip: 30,
+          discountedPrice: originPrice,
+        },
       };
 
       if (discounts?.length) {
@@ -70,17 +73,20 @@ class CheckoutService {
         });
         const { discount, newTotalOrderPrice } = disRe;
         if (discount > 0) {
-          itemCheckout.totalDiscount += discount;
+          itemCheckout.checkOrder.totalDiscount += discount;
           checkOrder.totalDiscount += discount;
         }
       }
-      checkOrder.originPrice += itemCheckout.originPrice;
-      itemCheckout.discountedPrice = originPrice - itemCheckout.totalDiscount;
+      checkOrder.originPrice += itemCheckout.checkOrder.originPrice;
+      checkOrder.feeShip += itemCheckout.checkOrder.feeShip;
 
+      itemCheckout.checkOrder.discountedPrice =
+        originPrice - itemCheckout.checkOrder.totalDiscount;
       shopOrderIdsEnd.push(itemCheckout);
     }
     checkOrder.discountedPrice =
       checkOrder.originPrice - checkOrder.totalDiscount;
+
     const checkout = {
       userId,
       shopOrderIds,

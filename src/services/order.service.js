@@ -29,7 +29,6 @@ class OrderService {
         await RedisService.releaseKey(keyLock);
       }
     }
-    console.log(checkList);
     if (checkList.includes(false)) {
       checkList.forEach((bol, index) => {
         if (!bol) {
@@ -40,21 +39,34 @@ class OrderService {
         "Some product is updated, please check your cart"
       );
     }
-    const trackingNumber = generateTrackNumber();
-    const order = await orderModel.create({
-      userId,
-      shiping,
-      status,
-      trackingNumber,
-      payment,
-      checkout: checkout.checkOrder,
-      products: orderProducts,
+    const orderData = checkout.shopOrderIdsEnd.map((item) => {
+      const trackingNumber = generateTrackNumber();
+      return {
+        shopId: item.shopId,
+        userId,
+        shiping,
+        status,
+        trackingNumber,
+        payment,
+        checkout: item.checkOrder,
+        products: item.products,
+      };
     });
-    if (!order) {
+    const orders = await orderModel.insertMany(orderData);
+    // const order = await orderModel.create({
+    //   userId,
+    //   shiping,
+    //   status,
+    //   trackingNumber,
+    //   payment,
+    //   checkout: checkout.checkOrder,
+    //   products: orderProducts,
+    // });
+    if (!orders) {
       throw ErrorResponse("Make order error");
     }
     await RedisService.releaseCheckout({ userId });
-    return order;
+    return orders;
   }
 
   static async getOrdersByUser(
@@ -80,6 +92,20 @@ class OrderService {
     );
     return updateOrder;
   }
+  static async updateStatus({ shopId }, { status, orderId }) {
+    const query = {
+      shopId,
+      _id: orderId,
+    };
+
+    const order = await orderModel.findOne(query);
+    if (!order) {
+      throw new BadRequestError("The order provided does not exist.");
+    }
+    order.status = status;
+    return await order.save();
+  }
   static async updateOrderStatusByShop() {}
 }
+
 module.exports = OrderService;

@@ -1,0 +1,11 @@
+2024-05-19 02:50:45.806 PM::info::9ae01432-710e-4d6b-9188-b847256877f0::	input params::GET::::{}
+2024-05-19 02:50:45.855 PM::error::9ae01432-710e-4d6b-9188-b847256877f0::	undefined-NaNms-Response:{}::{"message":"req is not defined"}
+2024-05-19 02:50:45.855 PM::error::9ae01432-710e-4d6b-9188-b847256877f0::	undefined-NaNms-Response:{}::{"message":"req is not defined"}
+2024-05-19 02:51:19.400 PM::info::a5595996-f419-4e5c-9e40-16e32849ab62::	input params::GET::::{}
+2024-05-19 02:51:19.434 PM::error::a5595996-f419-4e5c-9e40-16e32849ab62::	undefined-NaNms-Response:{}::{"message":"getSelectData is not defined"}
+2024-05-19 02:51:19.434 PM::error::a5595996-f419-4e5c-9e40-16e32849ab62::	undefined-NaNms-Response:{}::{"message":"getSelectData is not defined"}
+2024-05-19 02:51:50.495 PM::info::bd3f39eb-02c1-4fc9-893e-7674d2e416e4::	input params::GET::::{}
+2024-05-19 02:51:50.523 PM::error::bd3f39eb-02c1-4fc9-893e-7674d2e416e4::	undefined-NaNms-Response:{}::{"message":"productModel is not defined"}
+2024-05-19 02:51:50.523 PM::error::bd3f39eb-02c1-4fc9-893e-7674d2e416e4::	undefined-NaNms-Response:{}::{"message":"productModel is not defined"}
+2024-05-19 02:52:22.410 PM::info::3168b8e4-97ca-4e19-abd0-a058a69cbe1f::	input params::GET::::{}
+2024-05-19 02:52:23.773 PM::info::d4376a78-66fb-426f-b132-5a66e60e836d::	input params::GET::::{}

@@ -5,9 +5,7 @@ class RedisService {
     const { skuId, spuId } = productIdOb;
     const expireTime = 3;
     const retryTimes = 10;
-    const key = skuId
-      ? `lock_v1_${spuId}_${skuId}`
-      : `lock_v1_${spuId}_${skuId}`;
+    const key = skuId ? `lock_v1_${spuId}_${skuId}` : `lock_v1_${spuId}`;
     for (let i = 0; i < retryTimes; i++) {
       const setKey = await redisClientIn.setNX(key, key);
 
@@ -40,7 +38,6 @@ class RedisService {
   }
   static async getCheckout({ userId }) {
     const key = `check_out_${userId}`;
-    console.log(key);
     return await redisClientIn.get(key);
   }
   static async releaseCheckout({ userId }) {

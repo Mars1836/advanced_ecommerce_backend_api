@@ -8,6 +8,10 @@ var orderSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
+    shopId: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+    },
     shiping: {
       type: {
         city: String,

@@ -1,3 +1,6 @@
+const { getSelectData } = require("../../utils");
+const orderModel = require("../order.model");
+
 class OrderRepo {
   static findAllByQuery = async (
     query,
@@ -25,7 +28,7 @@ class OrderRepo {
     } else if (select.length > 0) {
       selectOp = getSelectData(select);
     }
-    return await productModel
+    return await orderModel
       .find(query)
       .sort(sort ? { ...defaultOps.sort, ...sort } : defaultOps.sort)
       .skip(+skip || defaultOps.skip)

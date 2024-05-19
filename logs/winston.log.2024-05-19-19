@@ -1,0 +1,89 @@
+2024-05-19 07:02:03.676 PM::info::6a4c4410-1c24-46f2-a696-aaa4f06e13e5::	input params::PATCH::::{}
+2024-05-19 07:02:03.735 PM::error::6a4c4410-1c24-46f2-a696-aaa4f06e13e5::	undefined-NaNms-Response:{"index":0,"code":2}::{"message":"unknown top level operator: $set. If you have a field name that starts with a '$' symbol, consider using $getField or $setField."}
+2024-05-19 07:02:03.735 PM::error::6a4c4410-1c24-46f2-a696-aaa4f06e13e5::	undefined-NaNms-Response:{"index":0,"code":2}::{"message":"unknown top level operator: $set. If you have a field name that starts with a '$' symbol, consider using $getField or $setField."}
+2024-05-19 07:02:04.827 PM::info::51c046af-f777-436c-8478-d2f4848f3bdb::	input params::PATCH::::{}
+2024-05-19 07:02:04.844 PM::error::51c046af-f777-436c-8478-d2f4848f3bdb::	undefined-NaNms-Response:{"index":0,"code":2}::{"message":"unknown top level operator: $set. If you have a field name that starts with a '$' symbol, consider using $getField or $setField."}
+2024-05-19 07:02:04.844 PM::error::51c046af-f777-436c-8478-d2f4848f3bdb::	undefined-NaNms-Response:{"index":0,"code":2}::{"message":"unknown top level operator: $set. If you have a field name that starts with a '$' symbol, consider using $getField or $setField."}
+2024-05-19 07:02:18.433 PM::info::6d383e9d-0b10-476c-a409-717cf39d7965::	input params::PATCH::::{}
+2024-05-19 07:02:18.448 PM::error::6d383e9d-0b10-476c-a409-717cf39d7965::	undefined-NaNms-Response:{"index":0,"code":2}::{"message":"unknown top level operator: $set. If you have a field name that starts with a '$' symbol, consider using $getField or $setField."}
+2024-05-19 07:02:18.448 PM::error::6d383e9d-0b10-476c-a409-717cf39d7965::	undefined-NaNms-Response:{"index":0,"code":2}::{"message":"unknown top level operator: $set. If you have a field name that starts with a '$' symbol, consider using $getField or $setField."}
+2024-05-19 07:03:08.628 PM::info::900e4fe6-2254-4988-a59b-8d5cfe572103::	input params::PATCH::::{}
+2024-05-19 07:03:08.658 PM::error::900e4fe6-2254-4988-a59b-8d5cfe572103::	undefined-NaNms-Response:{}::{"message":"order.updatedAt is not a function"}
+2024-05-19 07:03:08.658 PM::error::900e4fe6-2254-4988-a59b-8d5cfe572103::	undefined-NaNms-Response:{}::{"message":"order.updatedAt is not a function"}
+2024-05-19 07:03:10.509 PM::info::92d04cc2-7796-4844-a138-77c7e0e2c4aa::	input params::PATCH::::{}
+2024-05-19 07:03:10.526 PM::error::92d04cc2-7796-4844-a138-77c7e0e2c4aa::	undefined-NaNms-Response:{}::{"message":"order.updatedAt is not a function"}
+2024-05-19 07:03:10.526 PM::error::92d04cc2-7796-4844-a138-77c7e0e2c4aa::	undefined-NaNms-Response:{}::{"message":"order.updatedAt is not a function"}
+2024-05-19 07:04:07.108 PM::info::642c1c62-0908-485e-8285-33f0839f034a::	input params::PATCH::::{}
+2024-05-19 07:04:09.294 PM::info::460cc7c0-c312-473f-92f9-1abec0067fea::	input params::PATCH::::{}
+2024-05-19 07:04:22.269 PM::info::205bdd9b-ca70-43a9-83c0-fe950af6f495::	input params::PATCH::::{}
+2024-05-19 07:04:41.253 PM::info::aa69ff31-7df6-4683-84b7-9ff2c65e434d::	input params::PATCH::::{}
+2024-05-19 07:04:41.267 PM::error::aa69ff31-7df6-4683-84b7-9ff2c65e434d::	403-0ms-Response:{"status":403,"time":1716120281266}::{"message":"The order provided does not exist."}
+2024-05-19 07:04:41.267 PM::error::aa69ff31-7df6-4683-84b7-9ff2c65e434d::	403-0ms-Response:{"status":403,"time":1716120281266}::{"message":"The order provided does not exist."}
+2024-05-19 07:10:22.762 PM::info::56a7dc9e-93cb-4b57-beed-31242eaf0a6c::	input params::POST::::{"content":"Great product! Highly recommend it.","images":["https://example.com/image1.jpg","https://example.com/image2.jpg"],"userId":"663e667a54014d8805d0d19e","orderId":"6649e8353c6487ed24db8341"}
+2024-05-19 07:10:22.780 PM::error::56a7dc9e-93cb-4b57-beed-31242eaf0a6c::	undefined-NaNms-Response:{}::{"message":"Cannot read properties of undefined (reading 'ob')"}
+2024-05-19 07:10:22.780 PM::error::56a7dc9e-93cb-4b57-beed-31242eaf0a6c::	undefined-NaNms-Response:{}::{"message":"Cannot read properties of undefined (reading 'ob')"}
+2024-05-19 07:11:22.183 PM::info::d7fefaa8-0d61-485d-b5f3-1860a8d7bf28::	input params::POST::::{"content":"Great product! Highly recommend it.","images":["https://example.com/image1.jpg","https://example.com/image2.jpg"],"orderId":"6649e8353c6487ed24db8341"}
+2024-05-19 07:11:22.229 PM::error::d7fefaa8-0d61-485d-b5f3-1860a8d7bf28::	undefined-NaNms-Response:{}::{"message":"Cannot read properties of undefined (reading 'findIndex')"}
+2024-05-19 07:11:22.229 PM::error::d7fefaa8-0d61-485d-b5f3-1860a8d7bf28::	undefined-NaNms-Response:{}::{"message":"Cannot read properties of undefined (reading 'findIndex')"}
+2024-05-19 07:11:23.299 PM::info::57333818-6f3b-4cf8-a5a7-87742af9bf15::	input params::POST::::{"content":"Great product! Highly recommend it.","images":["https://example.com/image1.jpg","https://example.com/image2.jpg"],"orderId":"6649e8353c6487ed24db8341"}
+2024-05-19 07:11:23.323 PM::error::57333818-6f3b-4cf8-a5a7-87742af9bf15::	undefined-NaNms-Response:{}::{"message":"Cannot read properties of undefined (reading 'findIndex')"}
+2024-05-19 07:11:23.323 PM::error::57333818-6f3b-4cf8-a5a7-87742af9bf15::	undefined-NaNms-Response:{}::{"message":"Cannot read properties of undefined (reading 'findIndex')"}
+2024-05-19 07:11:26.124 PM::info::e084c0a4-5e9f-405c-8675-37fe35d10076::	input params::POST::::{"content":"Great product! Highly recommend it.","images":["https://example.com/image1.jpg","https://example.com/image2.jpg"],"star":5,"orderId":"6649e8353c6487ed24db8341"}
+2024-05-19 07:11:26.139 PM::error::e084c0a4-5e9f-405c-8675-37fe35d10076::	undefined-NaNms-Response:{}::{"message":"Cannot read properties of undefined (reading 'findIndex')"}
+2024-05-19 07:11:26.139 PM::error::e084c0a4-5e9f-405c-8675-37fe35d10076::	undefined-NaNms-Response:{}::{"message":"Cannot read properties of undefined (reading 'findIndex')"}
+2024-05-19 07:12:17.958 PM::info::9e075cc5-c21f-4e6f-a3dc-4e3d33e7183b::	input params::POST::::{"content":"Great product! Highly recommend it.","images":["https://example.com/image1.jpg","https://example.com/image2.jpg"],"star":5,"orderId":"6649e8353c6487ed24db8341"}
+2024-05-19 07:12:17.985 PM::error::9e075cc5-c21f-4e6f-a3dc-4e3d33e7183b::	403-0ms-Response:{"status":403,"time":1716120737984}::{"message":"You must have this product in your order before performing this action."}
+2024-05-19 07:12:17.985 PM::error::9e075cc5-c21f-4e6f-a3dc-4e3d33e7183b::	403-0ms-Response:{"status":403,"time":1716120737984}::{"message":"You must have this product in your order before performing this action."}
+2024-05-19 07:12:24.682 PM::info::cd7e3b19-4b0c-4fe5-8189-5d96d67cd47e::	input params::POST::::{"content":"Great product! Highly recommend it.","images":["https://example.com/image1.jpg","https://example.com/image2.jpg"],"star":5,"orderId":"6649e8353c6487ed24db8341"}
+2024-05-19 07:12:24.698 PM::error::cd7e3b19-4b0c-4fe5-8189-5d96d67cd47e::	403-0ms-Response:{"status":403,"time":1716120744698}::{"message":"You must have this product in your order before performing this action."}
+2024-05-19 07:12:24.698 PM::error::cd7e3b19-4b0c-4fe5-8189-5d96d67cd47e::	403-0ms-Response:{"status":403,"time":1716120744698}::{"message":"You must have this product in your order before performing this action."}
+2024-05-19 07:13:27.353 PM::info::7e909172-7fcd-4494-b0f7-9951b20b4a86::	input params::POST::::{"content":"Great product! Highly recommend it.","images":["https://example.com/image1.jpg","https://example.com/image2.jpg"],"star":5,"spuId":"0eyl2wv5","orderId":"6649e8353c6487ed24db8341"}
+2024-05-19 07:13:35.948 PM::info::ba070e0e-8183-4e5a-be86-48283dc57bd2::	input params::POST::::{"content":"Great product! Highly recommend it.","images":["https://example.com/image1.jpg","https://example.com/image2.jpg"],"star":5,"spuId":"0eyl2wv5","orderId":"6649e8353c6487ed24db8341"}
+2024-05-19 07:13:50.545 PM::info::8f8d544e-41fd-4c57-8903-c28d8ac20a1b::	input params::POST::::{"content":"Great product! Highly recommend it.","images":["https://example.com/image1.jpg","https://example.com/image2.jpg"],"spuId":"0eyl2wv5","orderId":"6649e8353c6487ed24db8341"}
+2024-05-19 07:13:50.564 PM::error::8f8d544e-41fd-4c57-8903-c28d8ac20a1b::	undefined-NaNms-Response:{"errors":{"star":{"name":"ValidatorError","message":"Path `star` is required.","properties":{"message":"Path `star` is required.","type":"required","path":"star"},"kind":"required","path":"star"}},"_message":"review validation failed","name":"ValidationError","message":"review validation failed: star: Path `star` is required."}::{"message":"review validation failed: star: Path `star` is required."}
+2024-05-19 07:13:50.564 PM::error::8f8d544e-41fd-4c57-8903-c28d8ac20a1b::	undefined-NaNms-Response:{"errors":{"star":{"name":"ValidatorError","message":"Path `star` is required.","properties":{"message":"Path `star` is required.","type":"required","path":"star"},"kind":"required","path":"star"}},"_message":"review validation failed","name":"ValidationError","message":"review validation failed: star: Path `star` is required."}::{"message":"review validation failed: star: Path `star` is required."}
+2024-05-19 07:17:20.177 PM::info::08723c98-4ebf-491b-ab8a-d4d82eee3ba3::	input params::POST::::{"content":"Great product! Highly recommend it.","images":["https://example.com/image1.jpg","https://example.com/image2.jpg"],"star":5,"spuId":"0eyl2wv5","orderId":"6649e8353c6487ed24db8341"}
+2024-05-19 07:19:02.744 PM::info::06179014-9133-49d9-a571-55245f3f0cf8::	input params::POST::::{"content":"Great product! Highly recommend it.","images":["https://example.com/image1.jpg","https://example.com/image2.jpg"],"star":5,"spuId":"0eyl2wv5","orderId":"6649e8353c6487ed24db8341"}
+2024-05-19 07:19:03.841 PM::info::3893b0f1-d77f-4cd1-a957-6cadccb4aea3::	input params::POST::::{"content":"Great product! Highly recommend it.","images":["https://example.com/image1.jpg","https://example.com/image2.jpg"],"star":5,"spuId":"0eyl2wv5","orderId":"6649e8353c6487ed24db8341"}
+2024-05-19 07:19:03.861 PM::error::3893b0f1-d77f-4cd1-a957-6cadccb4aea3::	403-0ms-Response:{"status":403,"time":1716121143860}::{"message":"You can only review once after buying it."}
+2024-05-19 07:19:03.861 PM::error::3893b0f1-d77f-4cd1-a957-6cadccb4aea3::	403-0ms-Response:{"status":403,"time":1716121143860}::{"message":"You can only review once after buying it."}
+2024-05-19 07:19:17.567 PM::info::f7c3da13-e04f-4fe5-a70a-fd92d83b732a::	input params::POST::::{"content":"Great product! Highly recommend it.","images":["https://example.com/image1.jpg","https://example.com/image2.jpg"],"star":5,"spuId":"0eyl2wv5","orderId":"6649e8353c6487ed24db8341"}
+2024-05-19 07:19:18.448 PM::info::c99dbf07-06f8-4494-9091-c5f13cd2f11f::	input params::POST::::{"content":"Great product! Highly recommend it.","images":["https://example.com/image1.jpg","https://example.com/image2.jpg"],"star":5,"spuId":"0eyl2wv5","orderId":"6649e8353c6487ed24db8341"}
+2024-05-19 07:19:18.463 PM::error::c99dbf07-06f8-4494-9091-c5f13cd2f11f::	403-1ms-Response:{"status":403,"time":1716121158462}::{"message":"You can only review once after buying it."}
+2024-05-19 07:19:18.463 PM::error::c99dbf07-06f8-4494-9091-c5f13cd2f11f::	403-1ms-Response:{"status":403,"time":1716121158462}::{"message":"You can only review once after buying it."}
+2024-05-19 07:20:15.111 PM::info::f430d4d5-38ec-44c6-bc37-e9754a985c72::	input params::GET::::{"spuId ":" 0eyl2wv5"}
+2024-05-19 07:20:15.118 PM::error::f430d4d5-38ec-44c6-bc37-e9754a985c72::	404-0ms-Response:{"status":404,"time":1716121215117}::{"message":"Page not foundddd"}
+2024-05-19 07:20:15.118 PM::error::f430d4d5-38ec-44c6-bc37-e9754a985c72::	404-0ms-Response:{"status":404,"time":1716121215117}::{"message":"Page not foundddd"}
+2024-05-19 07:21:42.436 PM::info::64ada7d5-9c46-4b6e-8e71-def91860cff4::	input params::GET::::{"spuId":"0eyl2wv5"}
+2024-05-19 07:21:43.947 PM::info::320771b7-a800-445e-99b3-bf9c40ef4ad5::	input params::GET::::{"spuId":"0eyl2wv5"}
+2024-05-19 07:21:46.986 PM::info::4cc86430-9f1f-4afc-8b26-afb0e33b5762::	input params::GET::::{"spuId":"0eyl2wv5"}
+2024-05-19 07:22:09.825 PM::info::9e024061-0e5c-4350-958a-04d7fa30fc47::	input params::GET::::{"spuId":"0eyl2wv5"}
+2024-05-19 07:22:10.788 PM::info::20309bc2-77ff-4d44-8c00-b636866b32ff::	input params::GET::::{"spuId":"0eyl2wv5"}
+2024-05-19 07:22:17.910 PM::info::4aebd25f-86a2-4c16-9573-6cc4ea8ac8d0::	input params::GET::::{"spuId":"0eyl2wv5"}
+2024-05-19 07:22:46.973 PM::info::7810ddf2-1c53-4e1b-83ce-74574acb17b2::	input params::GET::::{"spuId":"0eyl2wv5"}
+2024-05-19 07:23:03.228 PM::info::527e0814-1f72-43ce-83b1-5e9883a4f1a3::	input params::GET::::{"spuId":"0eyl2wv5"}
+2024-05-19 07:34:19.046 PM::info::bd538e09-8f1c-4bc3-a3e6-563d902ca740::	input params::POST::::{"content":"Great product! Highly recommend it.","reviewId":["https://example.com/image1.jpg","https://example.com/image2.jpg"]}
+2024-05-19 07:34:19.097 PM::error::bd538e09-8f1c-4bc3-a3e6-563d902ca740::	403-0ms-Response:{"status":403,"time":1716122059096}::{"message":"You must have this product in your order before performing this action."}
+2024-05-19 07:34:19.097 PM::error::bd538e09-8f1c-4bc3-a3e6-563d902ca740::	403-0ms-Response:{"status":403,"time":1716122059096}::{"message":"You must have this product in your order before performing this action."}
+2024-05-19 07:34:36.984 PM::info::0cfdf2ac-d83e-4a4c-aa84-5cb330a66eea::	input params::POST::::{"content":"Great product! Highly recommend it.","images":["https://example.com/image1.jpg","https://example.com/image2.jpg"],"star":5,"spuId":"0eyl2wv5","orderId":"6649e8353c6487ed24db8341"}
+2024-05-19 07:34:40.160 PM::info::4f37092b-2011-4d48-adc7-0d912882645e::	input params::POST::::{"content":"Great product! Highly recommend it.","images":["https://example.com/image1.jpg","https://example.com/image2.jpg"],"star":5,"spuId":"0eyl2wv5","orderId":"6649e8353c6487ed24db8341"}
+2024-05-19 07:34:40.187 PM::error::4f37092b-2011-4d48-adc7-0d912882645e::	403-0ms-Response:{"status":403,"time":1716122080186}::{"message":"You can only review once after buying it."}
+2024-05-19 07:34:40.187 PM::error::4f37092b-2011-4d48-adc7-0d912882645e::	403-0ms-Response:{"status":403,"time":1716122080186}::{"message":"You can only review once after buying it."}
+2024-05-19 07:36:08.276 PM::info::1d23f0c8-1fa8-4978-8d0a-45f226d4fc36::	input params::POST::::{"content":"Great product! Highly recommend it.","reviewId":""}
+2024-05-19 07:36:08.315 PM::error::1d23f0c8-1fa8-4978-8d0a-45f226d4fc36::	403-0ms-Response:{"status":403,"time":1716122168314}::{"message":"You must have this product in your order before performing this action."}
+2024-05-19 07:36:08.315 PM::error::1d23f0c8-1fa8-4978-8d0a-45f226d4fc36::	403-0ms-Response:{"status":403,"time":1716122168314}::{"message":"You must have this product in your order before performing this action."}
+2024-05-19 07:37:34.380 PM::info::b950d2da-46b1-4d81-a036-c86fb780561f::	input params::POST::::{"content":"Great product! Highly recommend it.","reviewId":""}
+2024-05-19 07:37:34.396 PM::error::b950d2da-46b1-4d81-a036-c86fb780561f::	401-0ms-Response:{"status":401,"time":1716122254395}::{"message":"Invalid request"}
+2024-05-19 07:37:34.396 PM::error::b950d2da-46b1-4d81-a036-c86fb780561f::	401-0ms-Response:{"status":401,"time":1716122254395}::{"message":"Invalid request"}
+2024-05-19 07:38:05.745 PM::info::a408fcd0-87bc-4e17-8aa2-1d82cf70aa9a::	input params::POST::::{"content":"Great product! Highly recommend it.","reviewId":""}
+2024-05-19 07:38:05.763 PM::error::a408fcd0-87bc-4e17-8aa2-1d82cf70aa9a::	403-0ms-Response:{"status":403,"time":1716122285762}::{"message":"Can not find the review provided in your store."}
+2024-05-19 07:38:05.763 PM::error::a408fcd0-87bc-4e17-8aa2-1d82cf70aa9a::	403-0ms-Response:{"status":403,"time":1716122285762}::{"message":"Can not find the review provided in your store."}
+2024-05-19 07:38:54.836 PM::info::9b52ed21-fd96-4f03-90cd-6dfbd1749660::	input params::POST::::{"content":"Great product! Highly recommend it.","reviewId":"6649f1ddff51371c6ba3fdd1"}
+2024-05-19 07:38:54.850 PM::error::9b52ed21-fd96-4f03-90cd-6dfbd1749660::	403-0ms-Response:{"status":403,"time":1716122334850}::{"message":"Can not find the review provided in your store."}
+2024-05-19 07:38:54.850 PM::error::9b52ed21-fd96-4f03-90cd-6dfbd1749660::	403-0ms-Response:{"status":403,"time":1716122334850}::{"message":"Can not find the review provided in your store."}
+2024-05-19 07:38:55.946 PM::info::e0b02b3b-90df-4701-bc9a-5e73f2ffa37d::	input params::POST::::{"content":"Great product! Highly recommend it.","reviewId":"6649f1ddff51371c6ba3fdd1"}
+2024-05-19 07:38:55.958 PM::error::e0b02b3b-90df-4701-bc9a-5e73f2ffa37d::	403-0ms-Response:{"status":403,"time":1716122335958}::{"message":"Can not find the review provided in your store."}
+2024-05-19 07:38:55.958 PM::error::e0b02b3b-90df-4701-bc9a-5e73f2ffa37d::	403-0ms-Response:{"status":403,"time":1716122335958}::{"message":"Can not find the review provided in your store."}
+2024-05-19 07:39:54.588 PM::info::88dfabb0-061d-447e-882b-d0694684ac82::	input params::POST::::{"content":"Great product! Highly recommend it.","reviewId":"6649f1ddff51371c6ba3fdd1"}
+2024-05-19 07:41:12.829 PM::info::3e4cf91c-9497-4621-ba5f-de4586895a12::	input params::POST::::{"content":"Great product! Highly recommend it.","reviewId":"6649f1ddff51371c6ba3fdd1"}
+2024-05-19 07:41:26.089 PM::info::3bcac6fe-16d9-4e75-9503-785189403300::	input params::POST::::{"content":"Great product! Highly recommend it.","reviewId":"6649f1ddff51371c6ba3fdd1"}

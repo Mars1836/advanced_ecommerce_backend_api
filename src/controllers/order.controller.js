@@ -14,8 +14,26 @@ class OrderController {
     );
     new CreateRequestSuccess({ metadata, message: "Order success" }).send(res);
   }
-  static async create() {
-    const metadata = await OrderService.create();
+  static async getOrdersByUser(req, res, next) {
+    const metadata = await OrderService.getOrdersByUser(
+      { userId: req.user.ob.id },
+      req.query
+    );
+    new CreateRequestSuccess({ metadata, message: "Get orders success" }).send(
+      res
+    );
+  }
+  static async updateStatus(req, res, next) {
+    const metadata = await OrderService.updateStatus(
+      { shopId: req.shop.ob.id },
+      {
+        ...req.body,
+      }
+    );
+    new CreateRequestSuccess({
+      metadata,
+      message: "Update order success",
+    }).send(res);
   }
 }
 module.exports = OrderController;

@@ -41,5 +41,9 @@ class CommentController {
       res
     );
   }
+  static async commentReview(req, res, next) {
+    const metadata = await CommentService.review({ ...req.body });
+    new SuccessResponse({ message: "Review comment", metadata }).send(res);
+  }
 }
 module.exports = CommentController;
