@@ -1,3 +1,4 @@
+const Producer = require("../../producer");
 const { redisdb } = require("../configs/config.redisdb");
 const redis = require("redis");
 
@@ -27,6 +28,9 @@ class RedisClient {
     return await redisClient.setNX(key, value);
   }
   async get(key) {
+    const producer = new Producer();
+    await producer.createChannel();
+    await producer.publicMessage({ name: "hauvu", age: "21" });
     return await redisClient.get(key);
   }
   async hset(hash, key, value) {

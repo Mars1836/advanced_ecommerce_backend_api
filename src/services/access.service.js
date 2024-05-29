@@ -158,7 +158,7 @@ class AccessService {
     });
 
     return {
-      shop: getInforData({
+      user: getInforData({
         fields: ["_id", "email", "name"],
         object: storedUser,
       }),

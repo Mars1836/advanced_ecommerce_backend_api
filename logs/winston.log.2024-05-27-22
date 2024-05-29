@@ -1,0 +1,30 @@
+2024-05-27 10:47:25.920 PM::info::24f9fa4c-2065-42aa-8020-1b05a6675051::	input params::GET::::{"page":"1"}
+2024-05-27 10:47:25.962 PM::error::24f9fa4c-2065-42aa-8020-1b05a6675051::	404-1ms-Response:{"status":404,"time":1716824845960}::{"message":"Page not foundddd"}
+2024-05-27 10:47:25.962 PM::error::24f9fa4c-2065-42aa-8020-1b05a6675051::	404-1ms-Response:{"status":404,"time":1716824845960}::{"message":"Page not foundddd"}
+2024-05-27 10:47:32.244 PM::info::969faf5f-f8b4-42f0-b6dd-61c2f4fd64a4::	input params::GET::::{"page":"1"}
+2024-05-27 10:47:32.254 PM::error::969faf5f-f8b4-42f0-b6dd-61c2f4fd64a4::	404-0ms-Response:{"status":404,"time":1716824852254}::{"message":"Page not foundddd"}
+2024-05-27 10:47:32.254 PM::error::969faf5f-f8b4-42f0-b6dd-61c2f4fd64a4::	404-0ms-Response:{"status":404,"time":1716824852254}::{"message":"Page not foundddd"}
+2024-05-27 10:47:37.235 PM::info::415b35df-431d-4dce-a37a-51b583c5208b::	input params::GET::::{"page":"1"}
+2024-05-27 10:49:54.567 PM::info::3ccae513-d277-4154-bc4d-c51882f19ceb::	input params::GET::::{"page":"1"}
+2024-05-27 10:49:54.581 PM::error::3ccae513-d277-4154-bc4d-c51882f19ceb::	404-1ms-Response:{"status":404,"time":1716824994580}::{"message":"Page not foundddd"}
+2024-05-27 10:49:54.581 PM::error::3ccae513-d277-4154-bc4d-c51882f19ceb::	404-1ms-Response:{"status":404,"time":1716824994580}::{"message":"Page not foundddd"}
+2024-05-27 10:50:35.777 PM::info::536591b6-9a93-48f6-8082-1ccbe0f180ab::	input params::GET::::{"page":"1"}
+2024-05-27 10:50:37.874 PM::info::fa4f198a-4e60-493e-857a-683288c6ad6b::	input params::GET::::{"page":"1"}
+2024-05-27 10:50:43.740 PM::info::41f62a80-69b7-45a9-80a3-5238d507227d::	input params::GET::::{"page":"1","text":"1"}
+2024-05-27 10:50:43.751 PM::error::41f62a80-69b7-45a9-80a3-5238d507227d::	undefined-NaNms-Response:{}::{"message":"Cannot access 'text' before initialization"}
+2024-05-27 10:50:43.751 PM::error::41f62a80-69b7-45a9-80a3-5238d507227d::	undefined-NaNms-Response:{}::{"message":"Cannot access 'text' before initialization"}
+2024-05-27 10:52:08.538 PM::info::b9b303e7-110c-4718-a581-376f9b2fa899::	input params::GET::::{"page":"1","text":"1"}
+2024-05-27 10:52:09.902 PM::info::a147b9e6-7dee-40c2-ab35-3b7a046370cd::	input params::GET::::{"page":"1","text":"1"}
+2024-05-27 10:52:10.893 PM::info::95ceb2b9-c5d8-49ce-95fe-36ef95e446b1::	input params::GET::::{"page":"1","text":"1"}
+2024-05-27 10:52:11.866 PM::info::4a95483f-b3c2-4c69-99f4-9b5315d55cbf::	input params::GET::::{"page":"1","text":"1"}
+2024-05-27 10:52:15.451 PM::info::1868ec7d-cde8-4632-9b95-a9199dae665f::	input params::GET::::{"page":"1","text":"t"}
+2024-05-27 10:52:16.885 PM::info::069aa8c7-7b3b-418f-8f7a-43a4cf08f929::	input params::GET::::{"page":"1","text":"t"}
+2024-05-27 10:52:30.395 PM::info::e446c208-6432-471e-827b-aa8845d435a8::	input params::GET::::{"text":"t"}
+2024-05-27 10:52:44.717 PM::info::288e0cb6-4ca3-4850-aaed-1072976cd0a5::	input params::GET::::{"text":"t"}
+2024-05-27 10:53:25.336 PM::info::bdb69ac9-b77e-4c25-a815-ecfaf9f7d2ff::	input params::GET::::{"text":"a"}
+2024-05-27 10:53:27.721 PM::info::01984606-ee5c-4096-8253-06313f9dde19::	input params::GET::::{"text":"a"}
+2024-05-27 10:53:29.411 PM::info::30701759-b5aa-4732-b94a-73ff6d2453e1::	input params::GET::::{"text":"a"}
+2024-05-27 10:53:39.889 PM::info::0fbf7ef1-9723-4d54-87e5-c6103d936f7d::	input params::GET::::{"text":"a"}
+2024-05-27 10:53:41.021 PM::info::7c59fa44-630e-47f1-8c76-6daded722e8f::	input params::GET::::{"text":"a"}
+2024-05-27 10:54:10.000 PM::info::7f2bb840-6aee-4838-9b59-a72c02949247::	input params::GET::::{"text":"a"}
+2024-05-27 10:54:13.862 PM::info::da951493-ecea-4c99-91d2-64188cad6677::	input params::GET::::{"spu_id":"0eyl2wv5","_detail":"1"}

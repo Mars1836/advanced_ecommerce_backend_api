@@ -11,7 +11,8 @@ router.post(
   asyncHandler(productController.createSPU)
 );
 router.get("/spu/sku", asyncHandler(productController.findSPUWithSKU));
-router.get("/spu/search/:text", asyncHandler(productController.searchSPU));
+router.get("/spu/search", asyncHandler(productController.searchSPU));
+router.get("/spu/suggest", asyncHandler(productController.findSuggestSPU));
 
 router.get("/sku", asyncHandler(productController.fineSKUById));
 

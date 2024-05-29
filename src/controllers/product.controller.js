@@ -172,16 +172,16 @@ class ProductController {
     new SuccessResponse({ message: "Create spu success", metadata }).send(res);
   };
   searchSPU = async (req, res, next) => {
-    const { text } = req.params;
+    const text = req.query.text ? req.query.text : "";
+
     const options = req.query;
-    console.log("text: _________", text);
     const metadata = await SPUService.search(
       {
         text,
       },
       options
     );
-    new SuccessResponse({ message: "Create spu success", metadata }).send(res);
+    new SuccessResponse({ message: "GET spu success", metadata }).send(res);
   };
   fineSKUById = async (req, res, next) => {
     const { sku_id, spu_id } = req.query;
@@ -190,7 +190,11 @@ class ProductController {
       sku_id,
       spu_id,
     });
-    new SuccessResponse({ message: "Create spu success", metadata }).send(res);
+    new SuccessResponse({ message: "Get spu success", metadata }).send(res);
+  };
+  findSuggestSPU = async (req, res, next) => {
+    const metadata = await SPUService.findSuggestSPU();
+    new SuccessResponse({ message: "Get spu success", metadata }).send(res);
   };
 }
 module.exports = new ProductController();

@@ -8,8 +8,9 @@ const InventoryService = require("./inventory.service");
 const SKUService = require("./sku.service");
 
 class SPUService {
-  static async search({ text }, { page = 1, sort = 0, limit = 1 }) {
-    const spus = spuModel
+  static async search({ text }, { page = 1, sort = 0, limit = 10 }) {
+    console.log(text);
+    const spus = await spuModel
       .find(
         {
           $text: { $search: text },
@@ -19,7 +20,23 @@ class SPUService {
       .sort({ score: -1 })
       .skip((page - 1) * limit)
       .limit(limit);
+
     return spus;
+  }
+  static async findSuggestSPU() {
+    const spu = await spuModel
+      .find()
+      .lean()
+      .select(
+        getUnSelectData([
+          "__v",
+          "createdAt",
+          "isDeleted",
+          "isDraft",
+          "isPublished",
+        ])
+      );
+    return spu;
   }
   static async findWithSKU({ spu_id }, { _detail }) {
     const spu = await spuModel

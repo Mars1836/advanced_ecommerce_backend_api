@@ -12,11 +12,12 @@ const logger = require("./loggers/winston.js");
 const app = express();
 
 // init middlewares
-app.use(
-  cors({
-    origin: "*",
-  })
-);
+const corsOptions = {
+  origin: "http://localhost:5173",
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 app.use(morgan("dev"));
 app.use(helmet());
